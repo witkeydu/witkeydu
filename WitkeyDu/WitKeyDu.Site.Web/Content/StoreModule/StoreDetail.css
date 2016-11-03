@@ -1,0 +1,102 @@
+﻿
+.module
+{
+    width:100%; 
+    background-color:#f8f8f8;
+ }
+ 
+.link-module
+{
+    overflow:auto;
+    /*padding:5px 0px;
+    background-color:#dfdddd;*/
+    margin: 23px 10px 23px 0;
+    padding: 12px 0;
+    border-top: 3px dashed #ddd;
+    border-bottom: 3px dashed #ddd;
+}
+
+.boxline
+{
+    border-right: 2px solid #ffffff;
+ }
+
+.link-module .box a
+{
+    text-decoration:none;
+    line-height:80px;
+    font-size:20px;
+    color:#000000;
+}
+
+
+.link-module .box a span
+{
+    font-size:15px;
+}
+
+.intro-module
+{
+    overflow:auto;
+}
+ .img-margin
+ {
+    margin-bottom:20px;
+ }
+ .intro-module-list{
+    overflow: hidden;
+    margin: 23px 10px 23px 0;
+    padding: 12px 0;
+ }
+ 
+.intro-module-list li{
+    float: left;
+    display: inline;
+    width: 101px;
+    text-align: center;
+    color: #999;
+    position: relative;
+    left: 2px;
+  }
+.intro-module-list li strong {
+    display: block;
+    margin-bottom: 10px;
+    color: #3c8fed;
+    font-weight: 400;
+}
+ .display-module
+ {
+     overflow:auto;
+     color:#000000;
+ }
+ 
+ 
+ .project
+ {
+      margin-bottom:20px;
+  }
+ .myproject-module
+ {
+     overflow:auto;
+     background-color:#ffffff;
+     box-shadow:0 1px 3px rgba(0,0,0,.3);
+     color:#000000;
+     border-radius:5px;
+ }
+ .edging
+ {
+     padding:6px 10px;
+ }
+ .project-price span
+ {
+    font-size:18px;
+ }
+ .mark
+ {
+     background-color:#65C279;
+     color:#000000;
+ }
+ .project-footer
+ {
+     background-color:#F3F5F7;
+ }

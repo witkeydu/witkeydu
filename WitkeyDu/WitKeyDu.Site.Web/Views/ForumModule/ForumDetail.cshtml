@@ -1,0 +1,146 @@
+﻿@model  WitKeyDu.Site.Models.ForumCommentView
+@using Webdiyer.WebControls.Mvc;
+@{
+    ViewBag.Title = "帖子详情";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    PagedList<WitKeyDu.Site.Models.ForumCommentView> fileModel = ViewData["commentInfo"] as PagedList<WitKeyDu.Site.Models.ForumCommentView>; 
+}
+@Styles.Render("~/Content/RefrenceFile/wangEditor/dist/css/wangEditor.css")
+@Styles.Render("~/Content/ForumModule/ForumDetail.css")
+
+@using (Html.BeginForm("ReleaseForumComment", "ForumModule", FormMethod.Post))
+{
+	<div class="container">
+        <div class="panel panel-default panel-css">
+            <div class="panel-heading text-center" style="word-wrap:break-word;word-break:break-all; ">
+                <h1>@ViewBag.ForumName</h1>
+                <input name="ForumID" class="ForumID" type="hidden" value="@ViewBag.ForumID"/>
+            </div>
+            <div class="panel-body" style="word-wrap:break-word;word-break:break-all; ">
+                <h4>@Html.Raw(@ViewBag.ForumContent)</h4>
+            </div>
+            <div class="comment-padding">
+                @helper DisplayList(List<WitKeyDu.Site.Models.ForumCommentView> model)
+                    {
+                        if (model.Count > 0)
+                        {
+                            foreach (var item in model)
+                            {
+                                if (item.CommentUserID != null)
+                                {
+                                    <div class="col-md-11 col-xs-11 col-sm-11 col-md-offset-1 col-xs-offset-1 col-sm-offset-1 sub-comment comment-line-height">
+                                        <img src="@item.HeadImage" class="img-circle navbar-brand" alt="头像" />
+                                        <span class="user-margin">@item.UserName (@item.AndDate)</span>
+                                        @Html.Raw(item.CommentContent)
+                                    </div>  
+                                    <div class="col-md-11 col-xs-11 col-sm-11 col-md-offset-1 col-xs-offset-1 sub-comment col-sm-offset-1 text-right btn-padding">
+                                        <a href="#commentdiv" class="badge text-right"  name="Comment">回复</a> 
+                                        <input name="ForumCommentID" class="ForumCommentID" type="hidden" value="@item.ForumCommentID"/>
+                                        <input name="SystemUserID" class="SystemUserID" type="hidden" value="@item.SystemUserID"/>
+                                        <input name="UserName" class="UserName" type="hidden" value="@item.UserName"/>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="main-comment">
+                                        <div class="col-md-12 col-xs-12 main-comment col-sm-12 comment-line-height">
+                                            <img src="@item.HeadImage" class="img-circle navbar-brand" alt="头像" />
+                                            <span class="user-margin">@item.UserName  (@item.AndDate)</span>
+                                            <label>:</label>
+                                        <div class="comment-article col-md-12 col-xs-12 main-comment col-sm-12">
+                                            @Html.Raw(item.CommentContent)
+                                        </div>
+                                        </div>
+                                        <div class="col-md-12 col-xs-12 col-sm-12 main-comment bottom-line btn-padding text-right">
+                                            <a href="#commentdiv" class="badge text-right"  name="Comment">回复</a> 
+                                            <input name="ForumCommentID" class="ForumCommentID" type="hidden" value="@item.ForumCommentID"/>
+                                            <input name="SystemUserID" class="SystemUserID" type="hidden" value="@item.SystemUserID"/>
+                                            <input name="UserName" class="UserName" type="hidden" value="@item.UserName"/>
+                                        </div>
+                                    </div>
+                                }
+                                if (item.ChildrenForumComment.Count > 0)
+                                {
+                                    @DisplayList(item.ChildrenForumComment);
+                                }
+                            }
+                        }
+                    }
+                @DisplayList(fileModel)
+                </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-10">
+                        @Html.Pager(fileModel, new PagerOptions
+                       {
+                           PageIndexParameterName = "id",
+                           NumericPagerItemCount = 10,
+                           ContainerTagName = "ul",
+                           CssClass = "pagination",
+                           CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>",
+                           DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>",
+                           PagerItemTemplate = "<li>{0}</li>",
+                           Id = "pager",
+                           PageIndexBoxId = "pageIndexBox",
+                           GoToButtonId = "goToBtn",
+                           NavigationPagerItemsPosition = PagerItemsPosition.Right
+                       })
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <div class="input-group" style="margin:20px 0">
+                            <input type="text" id="pageIndexBox" class="form-control input-md" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary btn-md" id="goToBtn">跳转</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+        <div id="commentdiv"> 
+            <p class="text-center">
+                    @Html.TextBoxFor(model => model.CommentUserID, new { @id = "CommentUserID", @type = "hidden" })
+                    @Html.TextBoxFor(model => model.CommentUserName, new { @id = "CommentUserName", @type = "hidden" })
+                    @Html.TextBoxFor(model => model.ParentCommentID, new { @id = "ParentCommentID", @type = "hidden" })
+                    @Html.TextAreaFor(model => model.CommentContent, new { @id = "CommentContent", @class = "form-control input-md" })
+            </p>
+        </div>
+        <div class="text-center"> 
+            <p class="text-center">
+                @Html.Submit("发            表           评            论")
+            </p>
+        </div>
+    </div>
+}
+    @Scripts.Render("~/Content/RefrenceFile/wangEditor/dist/js/wangEditor.js")
+    @Scripts.Render("~/Scripts/ForumModule/InsComEditor.js")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("a[name='Comment']").unbind().bind('click', function () {
+            var x = $(this).siblings("input[name='ForumCommentID']").val();
+            var y = $(this).siblings("input[name='SystemUserID']").val();
+            var z = $(this).siblings("input[name='UserName']").val();
+            $("input[name='ParentCommentID']").val(x);
+            $("input[name='CommentUserID']").val(y);
+            $("input[name='CommentUserName']").val(z);
+            editor.$txt.html('');
+            editor.$txt.append('<span><label style="color:blue">回复</label>@@</span>' + z + ':');
+        });
+    });
+    function reply(obj1,obj2) {
+        $(obj1).click(function () {
+            var Oreply = document.createElement("div");
+            Oreply.id = "asa";
+            var str = "<textarea cols=170 class='mutltext'style='width: 100%;'></textarea><button id='reply' class='replybtn'>提交</button>"
+            Oreply.innerHTML = str;
+            $(this).parent().parent(".w100").siblings(obj2).append(str);
+            console.log($(this).parent().parent(".w100").siblings(obj2))
+        })
+    }
+    reply("#reback1",".comment-article");
+    reply("#reback2", ".child-article");
+ 
+</script>

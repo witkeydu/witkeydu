@@ -1,0 +1,326 @@
+﻿@model WitKeyDu.Site.Models.ReleaseTaskModel
+@{
+    ViewBag.Title = "发布需求";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var categoryList = ViewData["categoryList"] as IEnumerable<WitKeyDu.Site.Models.TaskTypeView>; 
+  }
+@Styles.Render("~/Content/RefrenceFile/wangEditor/dist/css/wangEditor.css")
+@Styles.Render("~/Content/RefrenceFile/Bootstrap/css/bootstrap-datetimepicker.css")
+@Styles.Render("~/Content/RefrenceFile/Bootstrap/css/daterangepicker-bs3.css")
+@Styles.Render("~/Content/TaskModule/ReleaseTask.css")
+@Styles.Render("~/Content/TaskModule/TypeStyle.css")
+@Scripts.Render("~/Content/RefrenceFile/Bootstrap/js/moment.js")
+@Scripts.Render("~/Content/RefrenceFile/Bootstrap/js/bootstrap-datetimepicker.js")
+@Scripts.Render("~/Content/RefrenceFile/Bootstrap/js/daterangepicker.js")
+@Scripts.Render("~/Scripts/TaskModule/ReleaseTask.js")
+
+@using (Html.BeginForm("ReleaseTask", "TaskModule", FormMethod.Post))
+{
+	<div class="container">
+		<div class="row">
+		    <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+		            <div class="col-md-8 col-md-offset-2 form-module">
+                        <div class="col-md-12 col-xs-12 col-xm-12 text-left notice">
+                            请您在此做出详细的项目信息说明以及给出参考资料，以方便我们为您提供更好的服务。
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                        </div>
+				        <div class="form-group">
+                            <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                    @Html.LabelFor(model => model.TaskName, new { @class = "control-label label-line-height col-md" })
+                                    @Html.ValidationMessageFor(model => model.TaskName)  
+                            </div>   
+                            <div class="col-md-6  col-xs-6 col-xm-6 "> 
+                                    @Html.LabelFor(model => model.TaskTypeID, new { @class = "control-label label-line-height col-md" })
+                                    @Html.ValidationMessageFor(model => model.TaskTypeName)   
+                            </div>   
+                            <div class="col-md-6  col-xs-6 col-xm-6 "> 
+                                    @Html.TextBoxFor(model => model.TaskName, new { @class = "form-control input-md" })
+                            </div>
+                            <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                <div class="input-group" data-toggle="modal" data-target="#myModal">
+                                        @Html.TextBoxFor(model => model.TaskTypeID, new { @id = "MyTaskType", @type = "hidden" })
+                                        @Html.TextBoxFor(model => model.TaskTypeName, new { @id = "MyTaskTypeName", @class = "form-control input-md" })
+                                    <span class="btn btn-default input-group-addon" >点我选择</span>
+                                </div>
+                            </div>      
+                        </div>
+				        <div class="form-group">
+                            <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                @Html.LabelFor(model => model.TaskReward, new { @class = "control-label label-line-height col-md" })
+                                @Html.ValidationMessageFor(model => model.TaskReward)
+                            </div>
+                            <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                @Html.LabelFor(model => model.TaskLogo, new { @class = "control-label label-line-height col-md" })
+                                @Html.ValidationMessageFor(model => model.TaskLogo)
+                            </div>
+                            <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                            <div class="input-group">
+                                <span class="input-group-addon">￥</span>
+                                    @Html.TextBoxFor(model => model.TaskReward, new { @class = "form-control input-md" })
+                                <span class="input-group-addon">.00</span>
+                            </div>
+                            </div>
+                            <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                <input class="btn btn-default form-control input-md" type="button" data-toggle="modal" data-target="#ImageModal"value="设置图标" />
+                            </div>
+                        </div>
+				        <div class="form-group">
+                            <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                    @Html.LabelFor(model => model.TaskStartTime, new { @class = "control-label label-line-height col-md" })
+                                    @Html.ValidationMessageFor(model => model.TaskStartTime)
+                            </div>
+                            <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                    @Html.LabelFor(model => model.TaskEndTime, new { @class = "control-label label-line-height col-md" })
+                                    @Html.ValidationMessageFor(model => model.TaskEndTime)
+                            </div>
+                            <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                    @Html.TextBoxFor(model => model.TaskStartTime, new { @id = "TaskStartTime", @class = "form-control input-md" })
+                            </div>
+                            <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                    @Html.TextBoxFor(model => model.TaskEndTime, new { @id = "TaskEndTime", @class = "form-control input-md" })
+                            </div>
+                        </div>
+				        <div class="form-group">
+                            <div class="col-md-12 text-left"> 
+                                    @Html.LabelFor(model => model.TaskContent, new { @class = "control-label label-line-height col-md" })
+                                    @Html.ValidationMessageFor(model => model.TaskContent)
+                            </div>
+                            <div class="col-md-12"> 
+                                    @Html.TextAreaFor(model => model.TaskContent, new { @id = "TaskContent", @class = "form-control input-md" })
+                            </div>
+                            <div class="col-md-12 text-center"> 
+                                <p class="text-center">
+                                <br />
+                                    @Html.HiddenFor(model => model.ReturnUrl)
+                                    @Html.Submit("任  务  发  布")
+                                </p>
+
+                            </div>
+				            </div>
+                        </div>
+				    </div>
+                </div>
+		    </div>
+        </div>
+    </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">请选择任务类型</h4>
+      </div>
+      <div class="modal-body">
+          <div id="big_banner_wrap">
+	        <ul id="banner_menu_wrap" class="col-md-6 col-xs-6 col-sm-6">
+            @foreach (var item in categoryList)
+            {
+                <li>
+                    <a class="col-md-10 col-xs-8 col-sm-10 text-center">@item.TaskTypeName</a>
+			        <a class="banner_menu_i col-md-2 col-xs-4 col-sm-2">&gt;</a>
+                    <div  class="banner_menu_content col-md-12 col-xs-8 col-sm-12">
+	                    <ul>
+                            @foreach (var childrenCode in item.ChildrenTaskType)
+                            {
+                                <li class=" col-md-12 col-xs-12 col-sm-12">
+                                    <a ><img src="@item.TaskTypeLogo"/></a>
+                                    <input name="taskTypeID" class="taskTypeID" type="hidden" value="@childrenCode.TaskTypeID"/>
+                                    <input name="taskTypeName" class="taskTypeName" type="hidden" value="@childrenCode.TaskTypeName"/>
+                                    <a name="taskType" data-dismiss="modal">@childrenCode.TaskTypeName</a>
+                                </li>
+                            }
+	                    </ul>
+                    </div>
+                </li>
+            } 
+            </ul>
+        </div> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<div class="modal fade" id="ImageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title" id="myModalLabel">请选择帖子Logo</h5>
+            </div>
+            <div class="modal-body">
+                <div style="height:350px;text-align:center">
+		            <p id="swfContainer" width="630px">
+                        本组件需要安装Flash Player后才可使用，请从
+                        <a href="http://www.adobe.com/go/getflashplayer">
+                            这里
+                        </a>
+                        下载安装。
+		            </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Content/RefrenceFile/wangEditor/dist/js/wangEditor.js")
+@Scripts.Render("~/Content/RefrenceFile/HeadImage/swfobject.js")
+@Scripts.Render("~/Content/RefrenceFile/HeadImage/fullAvatarEditor.js")
+@Scripts.Render("~/Scripts/TaskModule/TypeScript.js")
+<script type="text/javascript">
+
+    var editor = new wangEditor('TaskContent');
+    // 自定义菜单
+    editor.config.menus = [
+    'source', 'bold', 'underline', 'italic', 'strikethrough',
+    'eraser', 'forecolor', 'bgcolor', 'quote', 'fontfamily',
+    'fontsize', 'head', 'unorderlist', 'orderlist', 'alignleft',
+        'aligncenter', 'alignright', 'link', 'unlink', 'table',
+    'emotion', 'img', 'vedio', 'location', 'insertcode', 'undo',
+        'redo', 'fullscreen'
+];
+// 颜色
+    editor.config.colors = {
+        '#880000': '暗红色',
+        '#800080': '紫色',
+        '#ff0000': '红色'
+    };
+
+    // 字体
+    editor.config.familys = [
+    '宋体', '黑体', '楷体', '微软雅黑',
+    'Arial', 'Verdana', 'Georgia'
+    ];
+
+    // 字号
+    editor.config.fontsizes = {
+        // 格式：'value': 'title'
+        1: '10px',
+        2: '13px',
+        3: '16px',
+        4: '19px',
+        5: '22px',
+        6: '25px',
+        7: '28px'
+    };
+    // 表情
+    editor.config.emotions = {
+        'default': {
+            title: '默认',  // 分组的标题
+            size: 18,  // 表情图标的尺寸
+            imgs: [
+            // 每个表情图标的url地址
+            '../Content/RefrenceFile/wangEditor/static/emotions/default/1.gif',
+            '../Content/RefrenceFile/wangEditor/static/emotions/default/2.gif',
+            '../Content/RefrenceFile/wangEditor/static/emotions/default/3.gif'
+        ]
+        },
+        'jinxing': {
+            title: '金星',  // 分组的标题
+            size: 50,  // 表情图标的尺寸
+            imgs: [
+            // 每个表情图标的url地址
+            '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/1.gif',
+            '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/2.gif',
+            '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/3.gif'
+        ]
+        }
+    };
+
+    // 将全屏时z-index修改为20000
+    editor.config.zindex = 20000;
+    // 阻止输出log
+    wangEditor.config.printLog = true;
+    // 关闭js过滤
+    editor.config.jsFilter = true;
+    // 取消粘贴过滤
+    editor.config.pasteFilter = true;
+    // 上传图片
+    editor.config.uploadImgUrl = '../Content/RefrenceFile/wangEditor/dist/upload.ashx';
+    editor.create();
+
+    swfobject.addDomLoadEvent(function () 
+    {      
+        var swf = new fullAvatarEditor(
+            "../../Content/RefrenceFile/HeadImage/fullAvatarEditor.swf",
+                "../../Content/RefrenceFile/HeadImage/expressInstall.swf", "swfContainer", {
+            id: 'swf',
+            upload_url: '/TaskModule/UploadAction',
+            //  src_url: "/samplePictures/Default.jpg",//默认加载的原图片的url
+            src_upload: 0,//默认为0；是否上传原图片的选项，有以下值：0:不上传；1:上传；2 :显示复选框由用户选择
+            isShowUploadResultIcon: false,//在上传完成时（无论成功和失败），是否显示表示上传结果的图标
+            src_size: "10MB",//选择的本地图片文件所允许的最大值，必须带单位，如888Byte，88KB，8MB
+            src_size_over_limit: "文件大小超出10MB，请重新选择图片。",//当选择的原图片文件的大小超出指定最大值时的提示文本。可使用占位符{0}表示选择的原图片文件的大小。
+            src_box_width: "210",//原图编辑框的宽度
+            src_box_height: "240",//原图编辑框的高度
+            tab_visible: false,//是否显示选项卡*
+
+            browse_box_width: "280",//图片选择框的宽度
+            browse_box_height: "240",//图片选择框的高度
+
+            avatar_sizes: "230*150",//100*100|50*50|32*32,表示一组或多组头像的尺寸。其间用"|"号分隔。
+        }, function (msg) {
+            switch (msg.code) {
+                // case 1: alert("页面成功加载了组件！"); break;
+                // case 2: alert("已成功加载默认指定的图片到编辑面板。"); break;
+                case 3:
+                    if (msg.type == 0) {
+                        alert("摄像头已准备就绪且用户已允许使用。");
+                    }
+                    else if (msg.type == 1) {
+                        alert("摄像头已准备就绪但用户未允许使用！");
+                    }
+                    else {
+                        alert("摄像头被占用！");
+                    }
+                    break;
+                case 5:
+                    if (msg.type == 0) {
+                        if (msg.content.sourceUrl) {
+                            alert("原图片已成功保存至服务器，url为：\n" + msg.content.sourceUrl);
+                        }
+                        alert("头像设置成功！");
+                    }
+                    break;
+            }
+        }
+        );
+        document.getElementById("upload").onclick = function () {
+            swf.call("upload");
+        };
+    });
+
+    $(function () {
+        $(document).ready(function () {
+            $('#TaskStartTime').daterangepicker({ 
+                todayBtn: true,
+                singleDatePicker: true
+            }).on("click",function(ev){
+                $("#TaskStartTime").datetimepicker("setEndDate", $("#TaskEndTime").val());
+                });
+            $('#TaskEndTime').daterangepicker({ 
+            todayBtn: true,
+                singleDatePicker: true 
+            }).on("click",function(ev){
+                $("#TaskEndTime").datetimepicker("setStartDate", $("#datetimeStart").val());
+                });
+        });
+    });
+  
+    $(document).ready(function () {
+        $("a[name='taskType']").unbind().bind('click', function () {
+            var x = $(this).siblings("input[name='taskTypeID']").val();
+            var y = $(this).siblings("input[name='taskTypeName']").val();
+            $("input[ID='MyTaskType']").val(x);
+            $("input[ID='MyTaskTypeName']").val(y);
+        });
+    });
+
+
+</script>
+}

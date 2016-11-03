@@ -1,0 +1,220 @@
+﻿@{
+    ViewBag.Title = "参与悬赏";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model WitKeyDu.Site.Models.TaskPlanView
+@Styles.Render("~/Content/RefrenceFile/wangEditor/dist/css/wangEditor.css")
+@Styles.Render("~/Content/RefrenceFile/Bootstrap/css/bootstrap-datetimepicker.css")
+@Styles.Render("~/Content/RefrenceFile/Bootstrap/css/daterangepicker-bs3.css")
+@Scripts.Render("~/Content/RefrenceFile/Bootstrap/js/moment.js")
+@Scripts.Render("~/Content/RefrenceFile/Bootstrap/js/bootstrap-datetimepicker.js")
+@Scripts.Render("~/Content/RefrenceFile/Bootstrap/js/daterangepicker.js")
+@Styles.Render("~/Content/TaskModule/TaskPace.css")
+
+    @using (Html.BeginForm("TaskPlan", "TaskModule", FormMethod.Post))
+    {
+        
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+	    <div class="container">
+		    <div class="row">
+		        <div class="col-md-10 col-md-offset-1">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+		                    <div class="col-md-8 col-md-offset-2 form-module">
+                                <div class="col-md-12 col-xs-12 col-xm-12 text-left notice">
+                                    请您在此填写您的报价价格、项目计划，进度计划以及个人能力，以使您更有机会接到此项目。
+                                </div>
+                                
+                                <input name="TaskID" class="TaskID" type="hidden" value="@Model.TaskID"/>
+		                        <div class="form-group">
+                                    <div class="col-md-12 col-xs-12 col-xm-12">    
+                                            @Html.LabelFor(model => model.PlanContent, new { @class = "control-label label-line-height  col-md" })
+                                            @Html.ValidationMessageFor(model => model.PlanContent)
+                                    </div>
+                                    <div class="col-md-12 col-xs-12 col-xm-12"> 
+                                        <p class="text-center">
+                                            @Html.TextAreaFor(model => model.PlanContent, new { @id = "PlanContent", @class = "form-control input-md" })
+                                        </p>
+                                    </div>
+				                </div>
+
+		                        <div class="form-group">
+                                    <div class="col-md-12 col-xs-12 col-xm-12">  
+                                        @Html.LabelFor(model => model.PlanPrice, new { @class = "control-label label-line-height col-md" })
+                                        @Html.ValidationMessageFor(model => model.PlanPrice)
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 col-xm-6">  
+                                        <div class="input-group">
+                                            <span class="input-group-addon">￥</span>
+                                                @Html.TextBoxFor(model => model.PlanPrice, new { @class = "form-control input-md" })
+                                            <span class="input-group-addon">.00</span>
+                                        </div>
+                                    </div>        
+                                    <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        <input class="btn btn-default form-control input-md" type="button" data-toggle="modal" data-target="#ImageModal"value="安排进度计划" />
+                                    </div>
+                                </div>
+				                <div id="result" class="form-group "></div>
+		                        <div class="form-group">
+                                    <div class="col-md-12 col-xs-12 col-xm-12 text-center submmit-module"> 
+                                        <p class="text-center">
+                                            @Html.Submit("参与悬赏")
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
+    }
+    <div class="modal fade" id="ImageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="myModalLabel">添加进度计划</h5>
+                </div>
+                <div class="modal-body plan-module">
+				    <div class="form-group">
+                        <div class="col-md-6 col-xs-6 col-xm-6">  
+                                @Html.LabelFor(model => model.PlanStartTime, new { @class = "control-label label-line-height col-md" })
+                                @Html.ValidationMessageFor(model => model.PlanStartTime)
+                        </div>
+                        <div class="col-md-6 col-xs-6 col-xm-6">  
+                                @Html.LabelFor(model => model.PlanEndTime, new { @class = "control-label label-line-height col-md" })
+                                @Html.ValidationMessageFor(model => model.PlanEndTime)
+                        </div>
+                        <div class="col-md-6 col-xs-6 col-xm-6">
+                                @Html.TextBoxFor(model => model.PlanStartTime, new { @id = "PlanStartTime", @class = "form-control input-md" })
+                        </div>
+                        <div class="col-md-6 col-xs-6 col-xm-6">
+                                @Html.TextBoxFor(model => model.PlanEndTime, new { @id = "PlanEndTime", @class = "form-control input-md" })
+                        </div>
+                    </div>
+				    <div class="form-group">
+                        <div class="col-md-12 col-xs-12 col-xm-12">
+                            @Html.LabelFor(model => model.CompleteContent, new { @class = "control-label label-line-height col-md" })
+                                @Html.ValidationMessageFor(model => model.CompleteContent)
+                        </div>
+                        <div class="col-md-12 col-xs-12 col-xm-12">
+                            @Html.TextAreaFor(model => model.CompleteContent, new { @id = "CompleteContent", @class = "form-control input-md" })
+                        </div>
+                        <div class="col-md-12 col-xs-12 col-xm-12">
+                            @Html.LabelFor(model => model.Remark, new { @class = "control-label label-line-height col-md" })
+                                @Html.ValidationMessageFor(model => model.Remark)
+                        </div>
+                        <div class="col-md-12 col-xs-12 col-xm-12">
+                            @Html.TextAreaFor(model => model.Remark, new { @id = "Remark", @class = "form-control input-md" })
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a onclick="ReleasePanPace()" class="btn btn-primary">添加计划</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@Scripts.Render("~/Content/RefrenceFile/wangEditor/dist/js/wangEditor.js")
+
+<script type="text/javascript">
+    var editor = new wangEditor('PlanContent');
+    // 自定义菜单
+    editor.config.menus = [
+    'source', 'bold', 'underline', 'italic', 'strikethrough',
+    'eraser', 'forecolor', 'bgcolor', 'quote', 'fontfamily',
+    'fontsize', 'head', 'unorderlist', 'orderlist', 'alignleft',
+        'aligncenter', 'alignright', 'link', 'unlink', 'table',
+    'emotion', 'img', 'vedio', 'location', 'insertcode', 'undo',
+        'redo', 'fullscreen'
+];
+// 颜色
+    editor.config.colors = {
+        '#880000': '暗红色',
+        '#800080': '紫色',
+        '#ff0000': '红色'
+    };
+
+    // 字体
+    editor.config.familys = [
+    '宋体', '黑体', '楷体', '微软雅黑',
+    'Arial', 'Verdana', 'Georgia'
+    ];
+
+    // 字号
+    editor.config.fontsizes = {
+        // 格式：'value': 'title'
+        1: '10px',
+        2: '13px',
+        3: '16px',
+        4: '19px',
+        5: '22px',
+        6: '25px',
+        7: '28px'
+    };
+    // 表情
+    editor.config.emotions = {
+        'default': {
+            title: '默认',  // 分组的标题
+            size: 18,  // 表情图标的尺寸
+            imgs: [
+            // 每个表情图标的url地址
+            '../Content/RefrenceFile/wangEditor/static/emotions/default/1.gif',
+            '../Content/RefrenceFile/wangEditor/static/emotions/default/2.gif',
+            '../Content/RefrenceFile/wangEditor/static/emotions/default/3.gif'
+        ]
+        },
+        'jinxing': {
+            title: '金星',  // 分组的标题
+            size: 50,  // 表情图标的尺寸
+            imgs: [
+            // 每个表情图标的url地址
+            '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/1.gif',
+            '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/2.gif',
+            '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/3.gif'
+        ]
+        }
+    };
+
+    // 将全屏时z-index修改为20000
+    editor.config.zindex = 20000;
+    // 阻止输出log
+    wangEditor.config.printLog = true;
+    // 关闭js过滤
+    editor.config.jsFilter = true;
+    // 取消粘贴过滤
+    editor.config.pasteFilter = true;
+    // 上传图片
+    editor.config.uploadImgUrl = '../Content/RefrenceFile/wangEditor/dist/upload.ashx';
+    editor.create();
+
+    $(function () {
+        $(document).ready(function () {
+            $('#PlanStartTime').daterangepicker({ 
+                todayBtn: true,
+                singleDatePicker: true
+            }).on("click",function(ev){
+                $("#PlanStartTime").datetimepicker("setEndDate", $("#PlanEndTime").val());
+                });
+            $('#PlanEndTime').daterangepicker({ 
+            todayBtn: true,
+                singleDatePicker: true 
+            }).on("click",function(ev){
+                $("#PlanEndTime").datetimepicker("setStartDate", $("#datetimeStart").val());
+                });
+        });
+    });
+    function ReleasePanPace() {
+        $.ajax({
+            type: "POST",
+            url: "ReleasePanPace",
+            data: "CompleteContent=" + $("#CompleteContent").val() + "&Remark=" + $("#Remark").val() + "&PlanStartTime=" + $("#PlanStartTime").val() + "&PlanEndTime=" + $("#PlanEndTime").val(),
+            success: function (data) {
+                $("#result").html(data);
+            }
+        });
+    };
+</script>

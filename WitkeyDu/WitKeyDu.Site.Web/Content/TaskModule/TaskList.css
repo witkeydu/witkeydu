@@ -1,0 +1,37 @@
+.panelbox
+{
+     background-color:#ffffff;
+     color:#000000;
+     background-size: 100% 100%;
+     background-image:url('../../Images/bgimg.png');
+     padding:30px 0px;
+ }
+ .task
+ {
+      margin-bottom:20px;
+  }
+ .task-module
+ {
+     overflow:auto;
+     background-color:#ffffff;
+     box-shadow:0 1px 3px rgba(0,0,0,.3);
+     color:#000000;
+     border-radius:5px;
+ }
+ .edging
+ {
+     padding:6px 10px;
+ }
+ .task-price
+ {
+    font-size:18px;
+ }
+ .mark
+ {
+     background-color:#65C279;
+     color:#000000;
+ }
+ .footer
+ {
+     background-color:#F3F5F7;
+ }

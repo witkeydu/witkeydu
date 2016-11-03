@@ -1,0 +1,52 @@
+﻿input[type=submit]
+{
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px;
+    line-height: 1.42857;
+    color: #fff;
+    background-color: #66CCCC;
+    background-image: none;
+    border: 1px solid #CCC;
+    font: bold 16px Arial, Helvetica;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+.notice
+{
+    background-color:#fcf8e3;
+    padding:20px;
+    font-size:16px;
+}
+.form-module
+{
+    padding:50px 0px;
+}
+.label-line-height
+{
+    line-height:50px;
+}
+.plan-module
+{
+    overflow:auto;
+}
+#result
+{
+    margin-top:10px;
+}
+.submmit-module
+{
+    padding-top:15px;
+}
+
+.pace-border
+{
+    border: 1px solid #cccccc;
+    padding-top:10px;
+}
+.pace-width
+{
+    width:100%;    
+}

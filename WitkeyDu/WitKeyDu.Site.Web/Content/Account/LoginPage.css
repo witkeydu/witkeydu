@@ -1,0 +1,177 @@
+﻿.bodycss
+{
+    background-color:#d9dee2;
+ }
+h1,h2{
+    text-transform: uppercase;
+    text-align: center;
+    color: #666;
+    margin: -10px 0 20px 0;
+    letter-spacing: 4px;
+    font: normal 26px/1 Verdana, Helvetica;
+    position: relative;
+}
+h2{
+    font: bold 16px/1 Verdana, Helvetica;
+}
+h1:after, h1:before,h2:after,h2:before{
+    background-color: #777;
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 15px;
+    width: 200px;
+}
+h2:after,h2:before{
+    top: 10px;
+    width: 20%;
+}
+h2:after{ 
+    background-image: -webkit-gradient(linear, left top, right top, from(#777), to(#fff));
+    background-image: -webkit-linear-gradient(left, #777, #fff);
+    background-image: -moz-linear-gradient(left, #777, #fff);
+    background-image: -ms-linear-gradient(left, #777, #fff);
+    background-image: -o-linear-gradient(left, #777, #fff);
+    background-image: linear-gradient(left, #777, #fff);      
+    right: 0;
+}
+h2:before{
+    background-image: -webkit-gradient(linear, right top, left top, from(#777), to(#fff));
+    background-image: -webkit-linear-gradient(right, #777, #fff);
+    background-image: -moz-linear-gradient(right, #777, #fff);
+    background-image: -ms-linear-gradient(right, #777, #fff);
+    background-image: -o-linear-gradient(right, #777, #fff);
+    background-image: linear-gradient(right, #777, #fff);
+    left: 0;
+}
+.Login 
+{
+    margin:0px auto;
+    background-color: #fff;
+    z-index: 0;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;  
+    border-bottom:4px solid rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow:
+          0 0 2px rgba(0, 0, 0, 0.2),
+          0 1px 1px rgba(0, 0, 0, .2),
+          0 3px 0 #fff,
+          0 4px 0 rgba(0, 0, 0, .2),
+          0 6px 0 #fff,  
+          0 7px 0 rgba(0, 0, 0, .2);
+    -moz-box-shadow:
+          0 0 2px rgba(0, 0, 0, 0.2),  
+          1px 1px   0 rgba(0,   0,   0,   .1),
+          3px 3px   0 rgba(255, 255, 255, 1),
+          4px 4px   0 rgba(0,   0,   0,   .1),
+          6px 6px   0 rgba(255, 255, 255, 1),  
+          7px 7px   0 rgba(0,   0,   0,   .1);
+    box-shadow:
+          0 0 2px rgba(0, 0, 0, 0.2),  
+          0 1px 1px rgba(0, 0, 0, .2),
+          0 3px 0 #fff,
+          0 4px 0 rgba(0, 0, 0, .2),
+          0 6px 0 #fff,  
+          0 7px 0 rgba(0, 0, 0, .2);
+          margin-top:6%;
+          height:550px;
+}
+.Logo
+{
+    margin-top:8%;
+}
+.signin-head {
+	margin:0 auto;
+	padding-top:20px;
+	width:100%;
+}
+#tbUserName
+{
+    background-position: 5px -8px !important;
+}
+
+#tbPassWord
+{
+    background-position: 5px -58px !important;
+}
+#tbCheckCode
+{
+    background-position: -1px -8px !important;
+}
+.inputRegion input{
+    background:#f1f1f1 url('../../Images/login-sprite.png') no-repeat;
+    padding:2px 5px 5px 35px;
+}
+.checkRegion input{
+    background:#f1f1f1 url('../../Images/icn_edit.png') no-repeat;
+    padding:2px 5px 5px 35px;
+}
+.checkCodeImg
+{ 
+    height: 34px;
+    width:100%;
+    padding:0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
+}
+
+.checkInformation {
+    background: url('../../Images/icn_warning.png') no-repeat 0 0;
+    margin: 0px auto 10px 0px;
+    padding-left: 20px;
+    color: Red;
+}
+
+input[type=submit]
+{
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px;
+    line-height: 1.42857;
+    color: #fff;
+    background-color: #66CCCC;
+    background-image: none;
+    border: 1px solid #CCC;
+    font: bold 16px Arial, Helvetica;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+.ThirdRegion
+{
+    text-align:center;
+}
+.link p {
+	line-height: 10px;
+	margin-top: 30px;
+}
+.footer
+{
+    font-size: 19px;
+    margin:0px auto;
+    margin-top:100px;
+    width:420px;
+}
+    
+.footer a{
+    margin: 30px 0px 0px 0px;
+    color: #9E8080;
+    width:100%;
+}
+li
+{
+    display:inline;
+    list-style:none;
+    white-space: nowrap;
+    padding: 10px 8%;
+}
+.redrict
+{
+    margin-top:50px;
+}

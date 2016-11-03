@@ -1,0 +1,98 @@
+﻿@model PagedList<WitKeyDu.Site.Models.FileView>
+@using Webdiyer.WebControls.Mvc;
+@using WitKeyDu.Component.Tools.Extensions;
+
+@{
+    ViewBag.Title = "文件列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/FileModule/FileList.css")
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-xs-12 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-body panelbox">
+                    <div class="col-md-9 col-xs-12 col-sm-6 text-center">
+                    <h3>享受品质众包——威客渡</h3>
+                    </div>
+                    <div class="col-md-3 col-xs-12 col-sm-6">
+                        <a href="ReleaseFile">
+                            <div class="col-md-12 col-xs-6 col-sm-12 btn btn-success">
+                                <h4>分享资源</h4>
+                            </div>
+                        </a>
+                        <div class="col-md-12 col-xs-6 col-sm-12 btn btn-default"> 
+                            <h4>选择类型</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default">
+           <div class="panel-body">
+                <div class="col-md-1 col-sm-4 col-xs-4 left-border">
+                    <img src="@item.HeadImg" class="img-circle navbar-brand" alt="头像" />
+                </div>
+                <div class="col-md-9 col-sm-4 col-xs-4">
+                    <div id="fileName">
+                        <a href="@Url.Action("FileDetail", "FileModule", new { fileCode = item.FileCode })">
+                            @Html.DisplayFor(modelItem => item.FileName)
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xs-4 col-sm-4 btn-href btn btn-success">
+                    <a href="@Url.Action("FileDetail", "FileModule", new { fileCode = item.FileCode })">查看详情 </a>  
+                </div>
+           </div>
+        </div>
+    }
+    
+   
+ <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-xs-12">
+                @Html.Pager(Model, new PagerOptions { 
+                PageIndexParameterName = "id",
+                NumericPagerItemCount = 10,
+                ContainerTagName = "ul", 
+                CssClass = "pagination",  
+                CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", 
+                DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", 
+                PagerItemTemplate = "<li>{0}</li>", Id = "pager", 
+                PageIndexBoxId = "pageIndexBox", 
+                GoToButtonId = "goToBtn", 
+                NavigationPagerItemsPosition = PagerItemsPosition.Right })
+            </div>
+            <div class="col-md-2 col-xs-12 text-right">
+                <div class="input-group" style="margin:20px 0">
+                    <input type="text" id="pageIndexBox" class="form-control input-md" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary btn-md" id="goToBtn">跳转</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+<script type="text/javascript">
+    $(function () {
+        $('#fileName').click(function () {
+            $.ajax({
+                type: "POST",
+                url: "FileModule/FileDetail",
+                data: { FileCode: $("#FileCode").val() },
+                dataType: "json",
+                success: function (data) {
+                }
+            });
+        });
+    });
+</script>
+

@@ -1,0 +1,105 @@
+﻿@model WitKeyDu.Site.Models.LoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>用户登录</title>
+    @Styles.Render("~/Content/Account/LoginPage.css")
+    @Styles.Render("~/bootstrap/css")
+    @Scripts.Render("~/bootstrap/js")
+    @Scripts.Render("~/Scripts/Account/Login.js")
+</head>
+<body class="bodycss">
+    @using (Html.BeginForm("Login","Account",  FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="container">
+		    <div class="row">
+			    <div class="col-md-8 col-xs-10 col-sm-10 col-md-offset-2 col-xs-offset-1 col-sm-offset-1 Login">
+			        <div class="col-md-6 col-md-offset-3 Logo">
+				        <div class="form-group margin-base-vertical">
+                            <p class="text-center">
+                                <img src="~/Images/man.GIF" alt="" class="img-circle"/>
+                            </p>
+                        </div>
+                    </div>
+			        <div class="col-md-6 col-md-offset-3">
+				        <div class="form-group margin-base-vertical inputRegion">
+                            <p class="text-center">
+                                @Html.TextBoxFor(model => model.Account, new { @id = "tbUserName", @class = "form-control input-md" })
+                                @Html.ValidationMessageFor(model => model.Account)
+					        </p>
+                            <p class="text-center">
+                                @Html.TextBoxFor(model => model.Password, new { @id = "tbPassWord",@type="password", @class = "form-control input-md" })
+                                @Html.ValidationMessageFor(model => model.Password)
+                            </p>
+				        </div>
+                    </div>
+                    <div class="form-group margin-base-vertical">
+			            <div class="col-xs-6 col-sm-6 col-md-3 col-md-offset-3 checkRegion">
+                            <p class="text-center">
+                                @Html.TextBoxFor(model=>model.CheckCode, new { @id = "tbCheckCode", @class = "form-control input-md" })
+                            </p>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-3">
+                            <p class="text-center">
+                                <img id="imgCheckCode"  src="GetValidateCode" alt="验证码" class="checkCodeImg" />
+				            </p>
+                        </div>
+			            <div class="col-md-6 col-md-offset-3">
+                            <p class="text-center">
+                                @Html.ValidationMessageFor(model => model.CheckCode)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group margin-base-vertical">
+			            <div class="col-md-6 col-md-offset-3 ">
+                            @Html.HiddenFor(m => m.ReturnUrl)
+                            <p class="text-center">
+                                @Html.Submit("登            录")
+				            </p>
+                        </div>
+                    </div>
+                    <div class="form-group margin-base-vertical">
+			            <div class="col-md-6 col-md-offset-3">
+			                <div class="col-xs-4 col-sm-4 col-md-4 text-left ThirdRegion"  >
+                                <img id="ThirdPartyQQLogin" src="~/Images/qq.png" alt="" height="30px" width="30px"/>
+                            </div>
+			                <div class="col-xs-4 col-sm-4 col-md-4  ThirdRegion">
+                                <img id="ThirdPartyWBLogin" src="~/Images/wb.png" alt="" height="30px" width="30px"/>
+                            </div>
+			                <div class="col-xs-4 col-sm-4 col-md-4 text-right ThirdRegion">
+                                <img id="ThirdPartyTBLogin" src="~/Images/wx.png" alt="" height="30px" width="30px"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group margin-base-vertical">
+			            <div class="col-md-6 col-md-offset-3">
+			                <div class="col-xs-6 col-sm-6 col-md-6" >
+				                <p class="text-left remove-margin">
+                                    <small>忘记密码？</small> 
+                                    <small>找回</small>
+				                </p>
+			                </div>
+			                <div class="col-xs-6 col-sm-6 col-md-6" >
+				                <p class="text-right remove-margin">
+                                    <small>还没注册？</small>
+                                    <small><a href="../Account/Register">注册</a></small>
+				                </p>
+			                </div>
+                        </div>
+                    </div>
+			        <div class="col-xs-12 col-sm-12 col-md-12 text-center redrict">
+                        @Html.ActionLink("返回首页", "Index", "Home")
+                    </div>
+                </div>
+            </div>
+        </div>
+    } 
+</body>
+</html>

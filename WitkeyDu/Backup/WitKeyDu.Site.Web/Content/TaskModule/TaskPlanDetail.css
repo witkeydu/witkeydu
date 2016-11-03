@@ -1,0 +1,47 @@
+﻿.plan-module
+{
+    overflow:auto;
+}
+.pace-border
+{
+    border-bottom: 1px solid #cccccc;
+    padding-top:10px;
+}
+.pace-width
+{
+    width:100%;    
+}
+.btn-submit a,.btn-submit a:hover
+{
+    text-decoration:none;
+}
+.btn-submit
+{   display: inline-block;
+    width: 70%;
+    height: 100%;
+    line-height: 1.42857;
+    padding:15px 0px;
+    color: #ffffff;
+    background-color: #66CCCC;
+    background-image: none;
+    border: 1px solid #CCC;
+    font-size:20px;
+    font-weight:bold;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+.panel-height
+{
+    overflow:auto;    
+}
+.left-line
+{
+    border-left: 1px solid #cccccc;
+}
+
+.btn-submit:hover, .btn-submit:focus, .btn-submit.focus 
+{
+    color:#ffffff;
+    text-decoration: none;
+}

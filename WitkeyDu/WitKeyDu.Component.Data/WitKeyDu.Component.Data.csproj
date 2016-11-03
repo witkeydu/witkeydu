@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D9D7CEB3-3F10-482F-9B96-08FB5378B786}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WitKeyDu.Component.Data</RootNamespace>
+    <AssemblyName>WitKeyDu.Component.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CachingProvider\Caching\CacheAllPolicy.cs" />
+    <Compile Include="CachingProvider\Caching\CachingPolicy.cs" />
+    <Compile Include="CachingProvider\Caching\CustomCachingPolicy.cs" />
+    <Compile Include="CachingProvider\Caching\DbQueryResults.cs" />
+    <Compile Include="CachingProvider\Caching\ICache.cs" />
+    <Compile Include="CachingProvider\Caching\InMemoryCache.cs" />
+    <Compile Include="CachingProvider\Caching\NoCachingPolicy.cs" />
+    <Compile Include="CachingProvider\DbCommandTreeScanner.cs" />
+    <Compile Include="CachingProvider\EFCachingCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CachingProvider\EFCachingCommandDefinition.cs" />
+    <Compile Include="CachingProvider\EFCachingConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CachingProvider\EFCachingDataReaderBase.cs" />
+    <Compile Include="CachingProvider\EFCachingDataReaderCacheReader.cs" />
+    <Compile Include="CachingProvider\EFCachingDataReaderCacheWriter.cs" />
+    <Compile Include="CachingProvider\EFCachingExtensionMethods.cs" />
+    <Compile Include="CachingProvider\EFCachingProviderConfiguration.cs" />
+    <Compile Include="CachingProvider\EFCachingProviderFactory.cs" />
+    <Compile Include="CachingProvider\EFCachingProviderServices.cs" />
+    <Compile Include="CachingProvider\EFCachingTransaction.cs" />
+    <Compile Include="CachingProvider\GlobalSuppressions.cs" />
+    <Compile Include="DataHelper.cs" />
+    <Compile Include="EFCachingDbContext.cs" />
+    <Compile Include="EFDbContext.cs" />
+    <Compile Include="EFRepositoryBase.cs" />
+    <Compile Include="EFUnitOfWorkContext.cs" />
+    <Compile Include="Extensions\DbContextExtensions.cs" />
+    <Compile Include="IEntityMapper.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="IUnitOfWorkContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProviderWrapperToolkit\DbCommandDefinitionWrapper.cs" />
+    <Compile Include="ProviderWrapperToolkit\DbCommandWrapper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProviderWrapperToolkit\DbConnectionWrapper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProviderWrapperToolkit\DbProviderFactoryBase.cs" />
+    <Compile Include="ProviderWrapperToolkit\DbProviderManifestWrapper.cs" />
+    <Compile Include="ProviderWrapperToolkit\DbProviderServicesBase.cs" />
+    <Compile Include="ProviderWrapperToolkit\DbTransactionWrapper.cs" />
+    <Compile Include="ProviderWrapperToolkit\EFProviderWrapperConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProviderWrapperToolkit\EFProviderWrapperFactory.cs" />
+    <Compile Include="ProviderWrapperToolkit\EFProviderWrapperServices.cs" />
+    <Compile Include="ProviderWrapperToolkit\EFProviderWriterExtensionMethods.cs" />
+    <Compile Include="ProviderWrapperToolkit\EntityConnectionWrapperUtils.cs" />
+    <Compile Include="ProviderWrapperToolkit\GlobalSuppressions.cs" />
+    <Compile Include="UnitOfWorkContextBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WitKeyDu.Component.Tools\WitKeyDu.Component.Tools.csproj">
+      <Project>{8C011ED6-D755-40D0-8223-43B308F5EB6B}</Project>
+      <Name>WitKeyDu.Component.Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CachingProvider\CustomDictionary.xml" />
+    <Content Include="ProviderWrapperToolkit\CustomDictionary.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

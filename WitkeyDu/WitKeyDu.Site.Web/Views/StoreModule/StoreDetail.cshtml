@@ -1,0 +1,102 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@using WitKeyDu.Component.Tools.Extensions;
+@model PagedList<WitKeyDu.Site.Models.ProjectView>
+@{
+    ViewBag.Title = ViewBag.StoreName + "的店铺";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/StoreModule/StoreDetail.css")
+    <div class="module">
+        <div class="intro-module">
+	        <div class="container">
+		        <div class="row">
+                    <div class="col-md-2 col-xs-6 col-sm-6 col-md-offset-5 col-xs-offset-3 col-sm-offset-3">
+                        <img src="@ViewBag.StoreLogo" class="center-block img-margin img-circle img-responsive" width="80%" alt="店铺图标" />
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-12 text-center">
+                        <h3>@ViewBag.StoreName</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="link-module">
+	        <div class="container">
+		        <div class="row"  id="myTab">
+		            <div class="col-md-4 col-xs-4 col-sm-4 text-center box active boxline">
+                        <a href="#myservice" data-toggle="tab">服务介绍</a>
+                    </div>
+		            <div class="col-md-4 col-xs-4 col-sm-4 text-center box boxline">
+                        <a href="#myproject" data-toggle="tab">交易评价</a>
+                    </div>
+		            <div class="col-md-4 col-xs-4 col-sm-4 text-center box">
+                        <a href="#myproject" data-toggle="tab">我的项目</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="myTabContent" class="tab-content">
+           <div class="tab-pane fade in active" id="myservice">
+                <div class="display-module">
+	                <div class="container">
+		                <div class="row">
+		                    <div class="col-md-12 col-xs-12 col-sm-12 text-center">
+                            <h4>@Html.Raw(@ViewBag.StoreContent)</h4> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+           <div class="tab-pane fade" id="myproject">
+                <div class="project-module">
+	                <div class="container">
+		                <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-md-3 col-sm-12 col-xs-12 project">
+                                    <div class="myproject-module">
+                                        <a href="@Url.Action("ProjectDetail", "StoreModule", new { ProjectID = item.ID })">
+                                            <img src="@item.ProjectLogo" class="img-responsive" width="100%" alt="项目图标" />
+                                        </a>
+                                        <div class="col-md-12 text-left edging">
+                                            @Html.DisplayFor(modelItem => item.ProjectName)
+                                        </div>
+                                        <div class="col-md-12 text-left edging project-price">
+                                            Num.@item.ID|&#65509;<span>@Html.DisplayFor(modelItem => item.ProjectPrice)</span>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-left edging project-footer">
+                                           @if (item.ShowUrl != "" && item.ShowUrl !=null)
+                                           {
+                                                <a href="@Url.Action(item.ShowUrl)">
+                                                    演示网址
+                                                </a>
+                                           }
+                                           else
+                                           { 
+                                                <a>
+                                                    暂无演示
+                                                </a>
+                                           }
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6 text-right edging project-footer">
+                                            <a href="@Url.Action("ProjectDetail", "StoreModule", new { ProjectID = item.ID })">
+                                                立即购买
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <div>
+                                @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "id" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#myTab div:eq(1) a').tab('show');
+        });
+    </script>

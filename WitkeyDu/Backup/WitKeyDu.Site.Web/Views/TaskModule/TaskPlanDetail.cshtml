@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "服务商解决方案";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IQueryable<WitKeyDu.Site.Models.PlanPaceView>
+@Styles.Render("~/Content/RefrenceFile/TimeLine/css/component.css")
+@Styles.Render("~/Content/RefrenceFile/TimeLine/css/default.css")
+@Scripts.Render("~/Content/RefrenceFile/TimeLine/js/modernizr.custom.js")
+@Styles.Render("~/Content/TaskModule/TaskPlanDetail.css")
+@Styles.Render("~/Content/TaskModule/TaskPlanDetail.css")
+
+@using (Html.BeginForm("TaskModule", "SelectTaskPlan"))
+{
+	<div class="container">
+        <div class="panel panel-default panel-height">
+                <div class="panel-heading">
+            		<div class="row">  
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                        <h2>@ViewBag.TaskName</h2>
+                        </div> 
+                        <div class="col-md-6 col-sm-6 col-xs-6 text-center">
+                        <h3>
+                        需求方</h3>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 text-center">
+                        <h3>
+                        开发方</h3>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 text-center">
+                        <h4>
+                        Num.@ViewBag.TaskID |&#65509;@ViewBag.TaskReward
+                        </h4>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 text-center left-line">
+                        <h4>
+                        Num.@ViewBag.ID |&#65509;@ViewBag.PlanPrice
+                        </h4>
+                        </div>
+                    </div>
+                </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 text-left">
+                        <h3>解决方案</h3>
+                    </div> 
+                    <div class="plan-module col-md-12 col-xs-12 col-xm-12">
+                        <h4>@Html.Raw(@ViewBag.PlanContent)</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row row-padding">
+                    <div class="col-md-12 text-left">
+                        <h3>进度计划表</h3>
+                    </div> 
+			        <div class="col-md-12 col-xs-12 col-xm-12">
+				        <ul class="cbp_tmtimeline col-md-12 col-xs-12 col-xm-12">
+                            @foreach (var item in Model)
+                            {
+                                <li>
+						            <time class="cbp_tmtime" datetime="2013-04-16">
+                                        <span>@Html.DisplayFor(modelItem => item.PlanStartTime)</span> 
+                                        <span>@Html.DisplayFor(modelItem => item.PlanEndTime)</span>
+                                    </time>
+						            <div class="cbp_tmicon cbp_tmicon-earth"></div>
+						            <div class="cbp_tmlabel">
+                                            进度安排：@Html.Raw(@item.CompleteContent)
+                                            <br />
+                                            <br />
+                                            备注信息：@Html.Raw(@item.Remark)
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                            @if ((ViewBag.TaskState) == "选标中" || (ViewBag.TaskState) == "招标中")
+                            {
+                                <a class='btn-submit'  onclick="SelectTaskPlan()">
+                                签&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 约 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;服&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 务&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 商
+                                </a>
+                            }
+                            else if ((ViewBag.TaskState) == "招标中")
+                            {
+                                <a class='btn-submit'>
+                                招&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 标 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;待
+                                </a>
+                            }
+                            else
+                            {
+                                <a class='btn-submit'>
+                                已&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 签 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;约
+                                </a>
+                            }
+                            <input id="TaskPlanID"name="TaskPlanID" class="TaskPlanID" type="hidden" value="@ViewBag.ID"/>
+                            <input id="SystemUserID"name="SystemUserID" class="SystemUserID" type="hidden" value="@ViewBag.SystemUserID"/>
+                            <input id="TaskID"name="TaskID" class="TaskID" type="hidden" value="@ViewBag.TaskID"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    function SelectTaskPlan() {
+    
+	    var x = $(this).siblings("input[name='TaskPlanID']").val();
+        $.ajax({
+            type: "POST",
+            url: "SelectTaskPlan",
+            data: "TaskPlanID=" + $("#TaskPlanID").val() + "&SystemUserID=" + $("#SystemUserID").val() + "&TaskID=" + $("#TaskID").val(),
+            success: function (data) {
+                location.href = "../TaskModule/TaskList?TaskPlanId="+x;
+            }
+        });
+    };
+</script>

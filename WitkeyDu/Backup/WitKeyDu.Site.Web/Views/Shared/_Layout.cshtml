@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/bootstrap/css")
+    @Scripts.Render("~/bootstrap/js")
+    @Scripts.Render("~/Scripts/Shared/Site.js")
+    @Styles.Render("~/Content/Shared/Site.css")
+    @RenderSection("Styles", required: false)
+</head>
+<body> 
+<div class="navbar navbar-default navbar-inverse navbar-fixed-top header NavigationLarge">
+    <div class="container">
+        <div class="navbar-header inner">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <div>
+                <a href="../Home/Index"><img alt="威客渡" src="~/Images/Logo.png" class="navbar-brand"/></a>
+            </div>
+        </div>
+        <div class="navbar-collapse collapse inner">
+            <ul class="nav navbar-nav navbar-left navigation">
+                <li>
+                    @Html.ActionLink("首    页", "Index", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("悬赏大厅", "TaskList", "TaskModule")
+                </li>
+                <li>
+                    @Html.ActionLink("服务大厅", "StoreList", "StoreModule")
+                </li>
+                <li>
+                    @Html.ActionLink("成功案例", "FinishedTask", "TaskModule")
+                </li>
+                <li>
+                    @Html.ActionLink("站内论坛", "ForumList", "ForumModule")
+                </li>
+                <li>
+                    @Html.ActionLink("站内资源", "FileList", "FileModule")
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navigation nav-dropdown">
+                <li class="dropdown">
+                @if (Session["SystemUser"] == " " || Session["SystemUser"] == null || ((WitKeyDu.Core.Models.Account.SystemUser)Session["SystemUser"]).HeadImage == "")
+                {
+                    <img alt="威客渡" src="../../Images/man.GIF" class="navbar-brand img-circle imagecss dropdown-toggle" data-toggle="dropdown"/>
+                }
+                else
+                {
+                    var imgUrl = (((WitKeyDu.Core.Models.Account.SystemUser)Session["SystemUser"]).HeadImage);
+                    @:<img alt="用户信息" src= " @imgUrl " class="navbar-brand img-circle imagecss dropdown-toggle" data-toggle="dropdown"/>
+                }
+                    <ul class="dropdown-menu dropdowncss">
+                        <li>
+                            @Html.ActionLink("个人中心", "UserInfo", "Account")
+                        </li>
+                                <li class="divider"></li>
+                        <li>
+                            @Html.ActionLink("修改密码", "index", "Home")
+                        </li>
+                                <li class="divider"></li>
+                        <li>
+                            @Html.ActionLink("设置头像", "HeadImage", "Account")
+                        </li>
+                                <li class="divider"></li>
+                        <li>
+                            @Html.ActionLink("创建店铺", "CreateStore", "StoreModule")
+                        </li>
+                                <li class="divider"></li>
+                        <li>
+                            @Html.ActionLink("发布项目", "ReleaseProject", "StoreModule")
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    @Html.ActionLink("登录", "Login", "Account")
+                </li>
+                <li>
+                    @Html.ActionLink("注册", "Register", "Account")
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="bodycss">
+    @RenderBody()
+</div>
+<div class="footer">
+    <div class="col-md-12 col-xs-12 col-sm-12 text-center footerend">
+	    <div class="col-md-3 col-xs-6 col-sm-12 text-center footer-line">
+            <ul>
+                <li>
+                    @Html.ActionLink("本站声明", "Register", "Account")
+                </li>
+                <li>
+                    @Html.ActionLink("保障协议", "Register", "Account")
+                </li>
+            </ul>
+        </div>
+	    <div class="col-md-3 col-xs-6 col-sm-12 text-center footer-line footer-body ">
+            <ul>
+                <li>
+                    @Html.ActionLink("用户登录", "Login", "Account")
+                </li>
+                <li>
+                    @Html.ActionLink("注册用户", "Register", "Account")
+                </li>
+            </ul>
+        </div>
+	    <div class="col-md-3 col-xs-6 col-sm-12 text-center footer-line">
+            <ul>
+                <li>
+                    @Html.ActionLink("本站论坛", "Register", "Account")
+                </li>
+                <li>
+                    @Html.ActionLink("本站资源", "Register", "Account")
+                </li>
+            </ul>
+        </div> 
+	    <div class="col-md-3 col-xs-6 col-sm-12 text-center footer-line">
+            <ul>
+                <li>
+                    @Html.ActionLink("本站论坛", "Register", "Account")
+                </li>
+                <li>
+                    @Html.ActionLink("本站资源", "Register", "Account")
+                </li>
+            </ul>
+        </div> 
+    </div> 
+    <div class="col-md-12 col-xs-12 col-sm-12 text-center footerend">
+        Copyright &copy;2016 www.witkeydu.com by Shiyl
+    </div>
+</div>
+@RenderSection("Scripts", required: false)
+</body>
+</html>

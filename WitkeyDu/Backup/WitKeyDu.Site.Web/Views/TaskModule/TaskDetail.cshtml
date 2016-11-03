@@ -1,0 +1,87 @@
+﻿@model List<WitKeyDu.Site.Models.StoreView>
+
+@{
+    ViewBag.Title = "任务详情";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/TaskModule/TaskDetail.css")
+
+
+@using (Html.BeginForm("DisplaySummary", "Home"))
+{
+	<div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+            		<div class="row">   
+                        <div class="col-md-10 col-sm-8 col-xs-8">
+                            <h4>@ViewBag.TaskName</h4>
+                        </div>
+                        <div class="text-center col-md-2 col-sm-4 col-xs-4 remove-margin">  
+                            <h4>@ViewBag.TaskState</h4>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                        <h4> @ViewBag.TaskStartTime.ToString("yyyy-MM-dd") 至 @ViewBag.TaskEndTime.ToString("yyyy-MM-dd")</h4>
+                        </div>
+                        <div class="col-md-10 col-sm-8 col-xs-8 ">
+                        <h4>Num.@ViewBag.ID | &#65509;@ViewBag.TaskReward </h4>
+                        </div>
+                        <div class=" text-center col-md-2 col-sm-4 col-xs-4 remove-margin">  
+                            @if((ViewBag.TaskState)=="招标中")
+                            {
+                                <h4><a class='btn btn-success' href="../TaskModule/TaskPlan?taskID=@ViewBag.ID">参与悬赏</a></h4>
+                            }
+                            else
+                            {
+                                 <h4><a class='btn btn-success'>正在开发</a></h4>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>@Html.Raw(@ViewBag.TaskContent)</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row row-padding">
+                        <div class="col-md-12 col-sm-12 col-xs-12 text-left">
+                            <h4>该需求下的服务商</h4>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-3 col-sm-12 col-xs-12 taskplan">
+                                <div class="taskplan-module">
+                                    <a href="@Url.Action("TaskPlanDetail", "TaskModule", new { TaskPlanID = item.taskPlanId })">
+                                        <img src="@item.StoreLogo" class="img-padding img-circle center-block img-responsive" width="60%" alt="店铺图标" />
+                                    </a>
+                                    <div class="col-md-12 text-left store-module-footer edging">
+                                        @Html.DisplayFor(modelItem => item.StoreName)
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 col-sm-6 store-module-footer text-left edging task-price">
+                                        @Html.DisplayFor(modelItem => item.StoreContract)
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 col-sm-6  store-module-footer text-right edging">
+                                        <span class="store-price">&#65509;1000</span>/起价
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 col-sm-6 store-module-footer store-price text-left edging">
+                                        <a href="@Url.Action("StoreDetail", "StoreModule", new { StoreID = item.Id })"> 
+                                            <span class="mark img-thumbnail">进入店铺</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 col-sm-6 store-module-footer store-price text-right edging">
+                                        <a href="@Url.Action("TaskPlanDetail", "TaskModule", new { TaskPlanID = item.taskPlanId })"> 
+                                            <span class="mark img-thumbnail">查看方案</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                </div>
+            </div>
+        </div>
+    </div>
+  
+}
+

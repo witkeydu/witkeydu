@@ -1,0 +1,46 @@
+﻿.row-padding
+{
+     border-top: 1px solid #dddddd;
+     overflow:auto;
+}
+.panel-border
+{
+    border: 1px solid #dddddd;
+}
+ .taskplan-module
+ {
+     overflow:auto;
+     background-color:#ffffff;
+     box-shadow:0 1px 3px rgba(0,0,0,.3);
+     color:#000000;
+     border-radius:5px;
+ }
+ .taskplan
+ {
+      margin:20px 0px;
+ }
+ 
+  .mark
+ {
+     background-color:#65C279;
+     color:#000000;
+     padding-left:10px;
+     padding-right:10px;
+ }
+ .edging
+ {
+     padding:6px 10px;
+ }
+ .img-padding
+ {
+    padding:10px 0px 10px 0px; 
+ }
+ 
+ .store-price
+ {
+     font-weight:bold;
+ }
+ .store-module-footer
+ {
+     background-color:#F3F5F7;
+ }

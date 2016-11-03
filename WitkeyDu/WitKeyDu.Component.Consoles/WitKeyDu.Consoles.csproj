@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9B91ECEF-3370-4604-8723-9BC955C10BFB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GMF.Demo.Consoles</RootNamespace>
+    <AssemblyName>GMF.Demo.Consoles</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\WitKeyDu\Output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WitKeyDu.Component.Data\WitKeyDu.Component.Data.csproj">
+      <Project>{D9D7CEB3-3F10-482F-9B96-08FB5378B786}</Project>
+      <Name>WitKeyDu.Component.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Component.Tools\WitKeyDu.Component.Tools.csproj">
+      <Project>{8C011ED6-D755-40D0-8223-43B308F5EB6B}</Project>
+      <Name>WitKeyDu.Component.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Core.Data\WitKeyDu.Core.Data.csproj">
+      <Project>{65AE426A-1184-4950-9B5D-5C601DA1E5B0}</Project>
+      <Name>WitKeyDu.Core.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Core.Models\WitKeyDu.Core.Models.csproj">
+      <Project>{FB77B3D9-C5A2-42BD-8942-9264F6003F12}</Project>
+      <Name>WitKeyDu.Core.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Core\WitKeyDu.Core.csproj">
+      <Project>{1082438F-3FCC-40FB-AF7F-D14C05A84D29}</Project>
+      <Name>WitKeyDu.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Site.Models\WitKeyDu.Site.Models.csproj">
+      <Project>{4A535968-EBC2-42EA-BF02-C8E157A20E3F}</Project>
+      <Name>WitKeyDu.Site.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Site\WitKeyDu.Site.csproj">
+      <Project>{D341A35E-7656-41EE-B5CC-8880A12B89B5}</Project>
+      <Name>WitKeyDu.Site</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,46 @@
+﻿.panelbox
+{
+    padding:30px 0px;
+    background-size: 100% 100%;
+    background-image:url('../../Images/bgimg.png');
+}
+.head-img
+{
+     padding:5px 5px;
+     overflow:auto;
+     background-color:#ffffff;
+     box-shadow:0 1px 3px rgba(0,0,0,.3);
+     color:#000000;
+}
+.left-border
+{
+     border-right: 2px dashed  #efefef;
+ }
+ #fileName a,a:hover
+{
+    height:55px;
+    line-height:55px;
+    text-decoration:none;
+    font-size:25px;
+    color:#000000;
+}
+.btn-href 
+{
+    height:55px;
+    line-height:55px;
+    color:#ffffff;
+    font-size:16px;
+    padding:0px;
+ }
+ 
+.btn-href a
+{
+    color:#ffffff;
+ }
+.btn-href:hover
+{
+    height:55px;
+    line-height:55px;
+    color:#ffffff;
+    font-size:18px;
+ }

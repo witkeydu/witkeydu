@@ -1,0 +1,149 @@
+﻿.right-css
+{
+    left: auto;
+    right: 0;
+}
+.module
+{
+    width:100%; 
+    background-color:#ffffff;
+ }
+.title-module
+{
+    padding:20px 0px;
+}
+.link-module
+{
+    overflow:auto;
+    padding:10px 0px;
+    background-color:#ffffff;
+    border-top: 3px dashed #ddd;
+    border-bottom: 3px dashed #ddd;
+}
+
+.boxline
+{
+    border-right: 1px solid #efefef;
+ }
+
+.link-module .box a
+{
+    text-decoration:none;
+    line-height:80px;
+    font-size:20px;
+    color:#000000;
+}
+
+
+.link-module .box a span
+{
+    font-size:18px;
+}
+
+.intro-module
+{
+    overflow:auto;
+    padding-bottom:20px;
+    background-color:#efefef;
+}
+.process-module
+{
+    overflow: auto;
+    border-top: 3px dashed #ddd;
+    border-bottom: 3px dashed #ddd;
+    padding-bottom:20px;
+    border-top: 1px solid #ffffff;
+}
+.infor-module
+{
+    overflow:auto;
+    color:#000000;
+    font-size:20px;
+    background-color:#ffffff;
+    padding:30px 0px;
+    border-top: 3px dashed #ddd;
+    border-bottom: 3px dashed #ddd;
+}
+
+.infor-module span
+{
+    color:#000000;
+    font-size:50px;
+}
+.infor-module .shape
+{
+    padding:20px;
+    background-color:#efefef;
+}
+.process-module
+{
+    color:#23527c;
+    font-size:20px;
+    background-color:#ffffff;
+    border-top: 3px dashed #ddd;
+    border-bottom: 3px dashed #ddd;
+}
+
+.process-module .box
+{
+    color:#23527c;
+    padding:20px;
+    line-height:20px;
+    background-color:#ffffff;
+}
+.process-module .box span
+{
+    color:#23527c;
+    font-size:40px;
+}
+
+.line
+{
+    border-left: 1px solid #ffffff;
+ }
+.multi-line
+{
+    overflow:auto;
+}
+.single-line
+{
+    padding:60px 15px;
+    overflow:auto;
+ }
+ 
+ .type-module
+ {
+    overflow:auto;
+    padding-bottom:20px;
+    background-color:#efefef;
+ }
+ .type-module-border
+ {
+     padding:10px 10px;
+     border: 2px solid #ffffff;
+ }
+ .type-module-item
+ {
+     padding:20px 0px;
+     overflow:auto;
+     background-color:#ffffff;
+     box-shadow:0 1px 3px rgba(0,0,0,.3);
+     color:#000000;
+     border-radius:5px;
+     position:relative;
+ }
+ .type-module-tasktypename
+ {
+     border: 2px solid #ffffff;
+     top:11px;
+     padding:10px 10px;
+     background-color:#ffffff;
+     opacity:0.8;
+     vertical-align:middle;
+     position:absolute;
+     overflow:auto;
+     background-color:#ffffff;
+     box-shadow:0 1px 3px rgba(0,0,0,.3);
+     color:#000000;
+     border-radius:5px;
+ }

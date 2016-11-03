@@ -1,0 +1,69 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@using WitKeyDu.Component.Tools.Extensions;
+@model PagedList<WitKeyDu.Site.Models.MemberView>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserList</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>UserName</th>
+        <th>NickName</th>
+        <th>Email</th>
+        <th>IsDeleted</th>
+        <th>AddDate</th>
+        <th>LoginLogCount</th>
+        <th>RoleNames</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+        <td>@Html.DisplayFor(modelItem => item.NickName)</td>
+        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+        <td>@Html.DisplayFor(modelItem => item.IsDeleted)</td>
+        <td>@Html.DisplayFor(modelItem => item.AddDate)</td>
+        <td style="text-align:center;">
+            @Html.DisplayFor(modelItem => item.LoginLogCount)
+        </td>
+        <td>@item.RoleNames.ExpandAndToString(",")</td>
+    </tr>
+}
+</table>
+ <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-xs-12">
+                @Html.Pager(Model, new PagerOptions { 
+                PageIndexParameterName = "id",
+                NumericPagerItemCount = 10,
+                ContainerTagName = "ul", 
+                CssClass = "pagination",  
+                CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", 
+                DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", 
+                PagerItemTemplate = "<li>{0}</li>", Id = "pager", 
+                PageIndexBoxId = "pageIndexBox", 
+                GoToButtonId = "goToBtn", 
+                NavigationPagerItemsPosition = PagerItemsPosition.Right })
+            </div>
+            <div class="col-md-2 col-xs-12 text-right">
+                <div class="input-group" style="margin:20px 0">
+                    <input type="text" id="pageIndexBox" class="form-control input-md" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary btn-md" id="goToBtn">跳转</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+</body>
+</html>

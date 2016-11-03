@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D341A35E-7656-41EE-B5CC-8880A12B89B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WitKeyDu.Site</RootNamespace>
+    <AssemblyName>WitKeyDu.Site</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helper\Ioc\MefDependencySolver.cs" />
+    <Compile Include="Helper\Logging\AdminLogAttribute.cs" />
+    <Compile Include="Helper\SiteStaticStrings.cs" />
+    <Compile Include="IAccountSiteContract.cs" />
+    <Compile Include="IFileTypeSiteContract.cs" />
+    <Compile Include="IForumCommentSiteContract.cs" />
+    <Compile Include="IForumTypeSiteContract.cs" />
+    <Compile Include="Impl\AccountSiteService.cs" />
+    <Compile Include="Impl\FileModuleSiteService.cs" />
+    <Compile Include="Impl\FileResourceSiteService.cs" />
+    <Compile Include="Impl\FileTypeSiteService.cs" />
+    <Compile Include="Impl\ForumCommentSiteService.cs" />
+    <Compile Include="Impl\ForumTypeSiteService.cs" />
+    <Compile Include="Impl\PlanPaceSiteService.cs" />
+    <Compile Include="Impl\ProjectSiteService.cs" />
+    <Compile Include="Impl\StoreModuleSiteService.cs" />
+    <Compile Include="Impl\TaskModuleSiteService.cs" />
+    <Compile Include="Impl\ForumModuleSiteService.cs" />
+    <Compile Include="Impl\TaskPlanSiteService.cs" />
+    <Compile Include="Impl\TaskTypeSiteService.cs" />
+    <Compile Include="IPlanPaceSiteContract.cs" />
+    <Compile Include="IProjectSiteContract.cs" />
+    <Compile Include="IStoreModuleSiteContract.cs" />
+    <Compile Include="ITaskModuleSiteContract.cs" />
+    <Compile Include="ITaskPlanSiteContract.cs" />
+    <Compile Include="ITaskTypeSiteContract.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IForumModuleSiteContract.cs" />
+    <Compile Include="IFileResourceSiteContract.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WitKeyDu.Component.Tools\WitKeyDu.Component.Tools.csproj">
+      <Project>{8C011ED6-D755-40D0-8223-43B308F5EB6B}</Project>
+      <Name>WitKeyDu.Component.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Core.Models\WitKeyDu.Core.Models.csproj">
+      <Project>{FB77B3D9-C5A2-42BD-8942-9264F6003F12}</Project>
+      <Name>WitKeyDu.Core.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Core\WitKeyDu.Core.csproj">
+      <Project>{1082438F-3FCC-40FB-AF7F-D14C05A84D29}</Project>
+      <Name>WitKeyDu.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Site.Models\WitKeyDu.Site.Models.csproj">
+      <Project>{4A535968-EBC2-42EA-BF02-C8E157A20E3F}</Project>
+      <Name>WitKeyDu.Site.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IFileModuleSiteContract.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

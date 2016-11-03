@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1082438F-3FCC-40FB-AF7F-D14C05A84D29}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WitKeyDu.Core</RootNamespace>
+    <AssemblyName>WitKeyDu.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IAccountService.cs" />
+    <Compile Include="IFileModuleService.cs" />
+    <Compile Include="IFileResourceService.cs" />
+    <Compile Include="IFileTypeService.cs" />
+    <Compile Include="IForumCommentService.cs" />
+    <Compile Include="IForumModuleService.cs" />
+    <Compile Include="Impl\AccountService.cs" />
+    <Compile Include="Impl\CoreServiceBase.cs" />
+    <Compile Include="Impl\FileModuleService.cs" />
+    <Compile Include="Impl\FileResourceService.cs" />
+    <Compile Include="Impl\FileTypeService.cs" />
+    <Compile Include="Impl\ForumCommentService.cs" />
+    <Compile Include="Impl\ForumModuleService.cs" />
+    <Compile Include="IForumTypeService.cs" />
+    <Compile Include="Impl\ForumTypeService.cs" />
+    <Compile Include="Impl\IProjectService.cs" />
+    <Compile Include="Impl\PlanPaceService.cs" />
+    <Compile Include="Impl\ProjectService.cs" />
+    <Compile Include="Impl\StoreService.cs" />
+    <Compile Include="Impl\TaskModuleService.cs" />
+    <Compile Include="Impl\TaskPlanService.cs" />
+    <Compile Include="Impl\TaskTypeService.cs" />
+    <Compile Include="IPlanPaceService.cs" />
+    <Compile Include="IStoreService.cs" />
+    <Compile Include="ITaskModuleService.cs" />
+    <Compile Include="ITaskPlanService.cs" />
+    <Compile Include="ITaskTypeService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WitKeyDu.Component.Data\WitKeyDu.Component.Data.csproj">
+      <Project>{D9D7CEB3-3F10-482F-9B96-08FB5378B786}</Project>
+      <Name>WitKeyDu.Component.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Component.Tools\WitKeyDu.Component.Tools.csproj">
+      <Project>{8C011ED6-D755-40D0-8223-43B308F5EB6B}</Project>
+      <Name>WitKeyDu.Component.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Core.Data\WitKeyDu.Core.Data.csproj">
+      <Project>{761686F6-93A6-4313-94D5-29DC65492EC0}</Project>
+      <Name>WitKeyDu.Core.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Core.Models\WitKeyDu.Core.Models.csproj">
+      <Project>{FB77B3D9-C5A2-42BD-8942-9264F6003F12}</Project>
+      <Name>WitKeyDu.Core.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

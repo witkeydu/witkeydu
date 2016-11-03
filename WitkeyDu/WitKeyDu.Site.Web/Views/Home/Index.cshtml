@@ -1,0 +1,210 @@
+﻿@{
+    ViewBag.Title = "威客渡";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/Home/Lunbo.css")
+@Styles.Render("~/Content/Home/Home.css")
+@model List<WitKeyDu.Site.Models.TaskTypeView>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+	<div id="myCarousel" class="carousel slide lbdiv" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="../../Images/wkdlogo.jpg" style="width:100%" data-src=" " alt="First slide"/>
+@*                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Example headline.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida          at  eget metus.                 Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                    </div>
+                </div>*@
+            </div>
+            <div class="item">
+                <img src="../../Images/wkdlc.png" style="width:100%" data-src="" alt="Second slide"/>
+            </div>
+            <div class="item">
+                <img src="../../Images/wkdyq.png" style="width:100%" data-src="" alt="Third slide"/>
+            </div>
+        </div>
+        <a class="carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="right-css carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+    <div class="module">
+        <div class="link-module">
+	        <div class="container">
+		        <div class="row">
+		            <div class="col-md-4 col-xs-6 col-sm-6 text-center box boxline">
+                        <a href="../TaskModule/ReleaseTask"><span class="glyphicon glyphicon-pencil"></span>发布您的需求</a>
+                    </div>
+		            <div class="col-md-4 col-xs-6 col-sm-6 text-center box boxline">
+                        <a href="../TaskModule/TaskList"><span class="glyphicon glyphicon-tasks"></span>招募中的项目</a>
+                    </div>
+		            <div class="col-md-4 col-xs-4 col-sm-4 hidden-xs hidden-sm text-center box">
+                        <a href="../StoreModule/StoreList"><span class="glyphicon glyphicon-tasks"></span>服务中的威客</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="intro-module">
+	        <div class="container">
+		        <div class="row">
+		            <div class="col-md-12">
+		                <div class="col-md-12 text-center title-module">
+                            <h3>享受品质众包 展现知识的力量</h3>
+                        </div>
+		                <div class="col-md-12 text-left boxline">
+                            <h4> 
+                                开发者可以在码市找到合适的项目并利用自身专业技能变成财富，
+                                成为本站的威客用户群体成员可以获得更过的学习资源、交流途径。
+                                软件需求方可以在码市低价获取专业开发者技能资源完成项目开发，
+                                加速软件开发效率，节省人力成本、快速高质量把想法落地成产品。
+                            </h4>
+                            <h3>我们的价值</h3>
+                            <a class="btn btn-success">高品质</a>
+                            海量认证开发者，精简 IT 建设成本。
+                            <br />
+                            <br />
+                            <a class="btn btn-success">高信誉</a>
+                            省心 全云端开发工具，过程全透明，专属项目经理。
+                            <br />
+                            <br />
+                            <a class="btn btn-success">更快捷</a>
+                            安全 专业监管，双向协议保障，纠纷仲裁。 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	    <div class="text-center process-module">
+	        <div class="container">
+		        <div class="row">
+		            <div class="col-md-12 text-center title-module">
+                    <h3>项目开发流程</h3>
+                    </div>
+                    <div class="col-md-6 multi-line">
+		                <div class="col-md-4 col-xs-12 col-sm-4 text-center  box boxline">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <br />
+                            <br />需求方
+                        </div>
+		                <div class="col-md-4 col-xs-12 col-sm-4 text-center box boxline">
+                            <a href="../TaskModule/ReleaseTask">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            <br />
+                            <br />发布需求
+                             </a>
+                        </div>
+		                <div class="col-md-3 col-xs-12 col-sm-4 text-center box boxline">
+                            <span class="glyphicon glyphicon-usd"></span>
+                            <br />
+                            <br />托管赏金
+                        </div>
+		                <div class="col-md-4 col-xs-12 col-sm-4 text-center user box boxline">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <br />
+                            <br />开发方
+                        </div>
+		                <div class="col-md-3 col-md-offset-4 col-xs-12 col-sm-4 text-center box boxline">
+                            <a href="../TaskModule/TaskList">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <br />
+                                <br />报名悬赏</a>
+                        </div>
+                        <div class="col-md-1 hidden-xs text-center">
+                            <span class="glyphicon glyphicon-arrow-right"></span>
+                        </div>
+                    </div>
+            
+                    <div class="col-md-6 text-center single-line">
+		                <div class="col-md-3 col-xs-12 col-sm-4 text-center box boxline">
+                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                            <br />
+                            <br />确认合作
+                        </div>
+		                <div class="col-md-3 col-xs-12 col-sm-4 text-center box boxline">
+                            <span class="glyphicon glyphicon-check"></span>
+                            <br />
+                            <br />无忧交付
+                        </div>
+		                <div class="col-md-3 col-xs-12 col-sm-4 text-center box boxline">
+                            <span class="glyphicon glyphicon-ok-circle"></span>
+                            <br />
+                            <br />无忧质保
+                        </div>
+		                <div class="col-md-3 col-xs-12 col-sm-4 text-center box">
+                            <span class="glyphicon glyphicon-flag"></span>
+                            <br />
+                            <br />项目完成
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="type-module">
+	        <div class="container">
+		        <div class="row">
+		                <div class="col-md-12 text-center title-module">
+                            <h3>我们的服务类别</h3>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-2 col-xs-6 col-sm-6 col-md-offset-0 col-sm-offset-0 col-xs-offset-3 text-center">
+                                <div class="type-module-border">
+                                    <div class="type-module-item">
+                                        <img src="@item.TaskTypeLogo"  class="img-responsive center-block" width="80%" alt=""/>
+                                        <h4>@Html.DisplayFor(modelItem => item.TaskTypeName)</h4>
+                                    </div> 
+                                @*    <div class="type-module-tasktypename img-responsive text-center">
+                                        <div class="img-responsive center-block" style="width:120px; height:120px;">
+                                            <h4>@Html.DisplayFor(modelItem => item.TaskTypeName)</h4>
+                                        </div>
+                                    </div>*@
+                                </div>
+                            </div>
+                        }
+                </div>
+            </div>
+        </div>
+        <div class="infor-module">
+	        <div class="container">
+		        <div class="row">
+		            <div class="col-md-4 text-center boxline">
+                        <span class="glyphicon glyphicon-user img-circle shape"></span> 
+                        <br />
+                        <br />
+                        当前用户 @ViewBag.UserCount 人
+                    </div>
+		            <div class="col-md-4 text-center boxline">
+                        <span class="glyphicon glyphicon-tasks img-circle shape"></span>
+                        <br />
+                        <br />
+                        完成订单 @ViewBag.FinishTaskCount 单
+                    </div>
+		            <div class="col-md-4 text-center">
+                        <span class="glyphicon glyphicon-usd img-circle shape"></span>
+                        <br />
+                        <br />
+                        累计金额 @ViewBag.TotalAccount 元
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $(".type-module-tasktypename").hide();
+        $(".type-module-item").hover(function () {
+            $(this).siblings(".type-module-tasktypename").show();
+        }, function () {
+            $(this).siblings(".type-module-tasktypename").hide();
+        });
+    });
+</script>*@

@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "提交任务";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IQueryable<WitKeyDu.Site.Models.PlanPaceView>
+@using (Html.BeginForm("uploadtask", "Account", FormMethod.Post))
+{
+	<div class="container">
+        <div class="panel panel-default panel-height">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12 text-left">
+                        <h3>解决方案</h3>
+                    </div> 
+                    <div class="col-md-12 col-xs-12 col-xm-12">
+                        <div class="plan-module col-md-12 col-xs-12 col-xm-12">
+                            <h4>@Html.Raw(@ViewBag.PlanContent)</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row row-padding">
+                    <div class="col-md-12 col-xs-12 col-xm-12 text-left">
+                        <h3>进度计划表</h3>
+                    </div> 
+			        <div class="col-md-12 col-xs-12 col-xm-12">
+                            @foreach (var item in Model)
+                            {
+						        <div class="col-md-12 col-xs-12 col-xm-12 text-center">
+                                    <h3>@Html.DisplayFor(modelItem => item.PlanStartTime)——@Html.DisplayFor(modelItem => item.PlanEndTime)</h3>
+                                </div>
+						        <div class="col-md-12 col-xs-12 col-xm-12">
+                                    <h4>进度安排：@Html.Raw(@item.CompleteContent)</h4>
+                                    <br />
+                                    <h4>备注信息：@Html.Raw(@item.Remark)</h4>
+                                </div>
+                                if (item.FileSrc == "" || item.FileSrc == null)
+                                {
+                                    <div class="col-md-2 col-xs-4 col-xm-2">
+                                        <h4>待交任务：</h4>
+                                    </div>
+                                    <div class="col-md-7 col-xs-5 col-xm-7">
+                                        <input type="file" name="myfile" />
+                                    </div>
+                                    <div class="col-md-3 col-xs-3 col-xm-3">
+                                        @Html.Submit("提  交")
+                                    </div>
+                                }
+                                else
+                                { 
+                                <div class="col-md-12 col-xs-12 col-xm-12">
+                                    <a href="/Account/DownFile?filePath=@item.FileSrc&fileName=@DateTime.Now" >下载文件 </a>
+                                </div>  
+                                }
+                            }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ }

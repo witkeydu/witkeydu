@@ -1,0 +1,83 @@
+﻿@model WitKeyDu.Site.Models.RegisterModel
+@{
+    ViewBag.Title = "注册用户";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    @Styles.Render("~/Content/Account/RegisterPage.css")
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+    {        
+	    <div class="container">
+		    <div class="row">
+		        <div class="col-md-10 col-md-offset-1">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+		                <div class="col-md-8 col-md-offset-2 form-module">
+                            <div class="col-md-12 col-xs-12 col-xm-12 text-left notice">
+                                请您在此分享文件资源以及教程信息。转载请注明出，知识产权不得侵犯，处违法必究。
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                            </div>
+		                    <div class="form-group">
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.LabelFor(model => model.Account, new { @class = "control-label  label-line-height col-md" })
+                                        @Html.ValidationMessageFor(model => model.Account)
+                                </div>
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.LabelFor(model => model.NickName, new { @class = "control-label  label-line-height col-md" })
+                                        @Html.ValidationMessageFor(model => model.NickName)
+                                </div>
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.TextBoxFor(model => model.Account, new { @class = "form-control input-md" })
+                                </div>
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.TextBoxFor(model => model.NickName, new { @class = "form-control input-md" })
+                                </div>
+                            </div>
+		                    <div class="form-group">
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.LabelFor(model => model.Password, new { @class = "control-label  label-line-height col-md" })
+                                        @Html.ValidationMessageFor(model => model.Password)
+                                </div>
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.LabelFor(model => model.RepeatPassword, new { @class = "control-label  label-line-height col-md" })
+                                        @Html.ValidationMessageFor(model => model.RepeatPassword)
+                                </div>
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control input-md" })
+                                </div>
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.TextBoxFor(model => model.RepeatPassword, new { @class = "form-control input-md" })
+                                </div>
+                            </div>
+		                    <div class="form-group">
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.LabelFor(model => model.ContectNumber, new { @class = "control-label  label-line-height col-md" })
+                                        @Html.ValidationMessageFor(model => model.ContectNumber)
+                                </div>
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.LabelFor(model => model.Email, new { @class = "control-label  label-line-height col-md" })
+                                        @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.TextBoxFor(model => model.ContectNumber, new { @class = "form-control input-md" })
+                                </div>
+                                <div class="col-md-6 col-xs-6 col-xm-6 "> 
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-md" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-xs-12 col-xm-12"> 
+                                <p class="text-center">
+                                <br />
+                                    @Html.HiddenFor(model => model.ReturnUrl)
+                                    @Html.Submit("注            册")
+                                </p>
+                            </div>                    
+                        </div>
+				    </div>
+                </div>
+		    </div>
+        </div>
+    </div>
+    }

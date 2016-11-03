@@ -1,0 +1,26 @@
+﻿a,a:hover,a:link,a:hover,a:active,a:visited
+{
+    text-decoration:none;
+    color:Black;
+}
+.panelbox
+{
+    padding:30px 0px;
+    background-size: 100% 100%;
+    background-image:url('../../Images/bgimg.png');
+}
+.forum-title
+{
+    border-bottom:0px solid #dddddd;    
+}
+.forum-content
+{
+    overflow:auto;
+    min-height:130px; 
+    *+height:100%;  
+    _height:130px; 
+}
+.forum-content-module
+{
+    padding:10px;    
+}

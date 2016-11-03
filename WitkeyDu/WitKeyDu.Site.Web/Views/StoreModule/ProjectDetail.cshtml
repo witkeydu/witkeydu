@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "项目详情";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("DisplaySummary", "Home"))
+{
+	<div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            	<div class="row">   
+                    <div class="col-md-10 col-sm-8 col-xs-8">
+                        <h4>@ViewBag.ProjectName</h4>
+                    </div>
+                    <div class="col-md-10 col-sm-8 col-xs-8 ">
+                    <h4>Num.@ViewBag.ID | &#65509;@ViewBag.ProjectPrice </h4>
+                    </div>
+                    <div class=" text-center col-md-2 col-sm-4 col-xs-4 remove-margin">  
+                        @if ((ViewBag.TaskState) == "招标中")
+                        {
+                            <h4><a class='btn btn-success' href="../TaskModule/TaskPlan?taskID=@ViewBag.ID">参与悬赏</a></h4>
+                        }
+                        else
+                        {
+                                <h4><a class='btn btn-success'>正在开发</a></h4>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>@Html.Raw(@ViewBag.ProjectIntroduction)</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

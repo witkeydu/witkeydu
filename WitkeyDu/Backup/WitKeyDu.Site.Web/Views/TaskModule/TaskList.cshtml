@@ -1,0 +1,150 @@
+﻿@using Webdiyer.WebControls.Mvc;
+@using WitKeyDu.Component.Tools.Extensions;
+@model PagedList<WitKeyDu.Site.Models.TaskListView>
+
+@{
+    ViewBag.Title = "任务列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var categoryList = ViewData["categoryList"] as IEnumerable<WitKeyDu.Site.Models.TaskTypeView>; 
+    
+}
+@Styles.Render("~/Content/TaskModule/TaskList.css")
+@Styles.Render("~/Content/TaskModule/TypeStyle.css")
+@Styles.Render("~/Content/TaskModule/component.css")
+@Scripts.Render("~/Scripts/TaskModule/modernizr.custom.js")  
+     
+@using (Html.BeginForm("TaskDetail", "TaskModule", FormMethod.Post))
+{ 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-body panelbox">
+                        <div class="col-md-9 col-xs-12 col-sm-6 text-center">
+                            <h3>享受品质众包——威客渡</h3>
+                        </div>
+                        <div class="col-md-3 col-xs-12 col-sm-6">
+                            <a href="ReleaseTask">
+                                <div class="col-md-12 col-xs-6 col-sm-12 btn btn-success">
+                                    <h4>发布悬赏</h4>
+                                </div>
+                            </a>
+                            <div id="selecttype" data-toggle="modal" data-target="#myModal" class="col-md-12 col-xs-6 col-sm-12 btn btn-default"> 
+                                <h4>@ViewBag.TaskTypeName</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 col-sm-12 col-xs-12 task">
+                    <div class="task-module">
+                        <a href="@Url.Action("TaskDetail", "TaskModule", new { TaskID = item.Id })">
+                            <img src="@item.TaskLogo" class="img-responsive" width="100%" alt="项目图标" />
+                        </a>
+                        <div class="col-md-12 text-left edging">
+                            @Html.DisplayFor(modelItem => item.TaskName)
+                        </div>
+                        <div class="col-md-6 text-left edging task-price">
+                            &#65509 
+                            @Html.DisplayFor(modelItem => item.TaskReward)
+                        </div>
+                        <div class="col-md-6 text-right edging">
+                            <span class="mark img-thumbnail">@Html.DisplayFor(modelItem => item.TaskState)</span>
+                        </div>
+                        <div class="col-md-12 edging footer">
+                            交付周期：
+                            @Html.DisplayFor(modelItem => item.DayNum) 天
+                        </div>
+                    </div>
+                </div>
+            }
+            <div>
+             <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-xs-12">
+                            @Html.Pager(Model, new PagerOptions { 
+                            PageIndexParameterName = "id",
+                            NumericPagerItemCount = 10,
+                            ContainerTagName = "ul", 
+                            CssClass = "pagination",  
+                            CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", 
+                            DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", 
+                            PagerItemTemplate = "<li>{0}</li>", Id = "pager", 
+                            PageIndexBoxId = "pageIndexBox", 
+                            GoToButtonId = "goToBtn", 
+                            NavigationPagerItemsPosition = PagerItemsPosition.Right })
+                        </div>
+                        <div class="col-md-2 col-xs-12 text-right">
+                            <div class="input-group" style="margin:20px 0">
+                                <input type="text" id="pageIndexBox" class="form-control input-md" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary btn-md" id="goToBtn">跳转</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @section Scripts{@{Html.RegisterMvcPagerScriptResource();}}
+            </div>
+        </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">请选择任务类型</h4>
+          </div>
+          <div class="modal-body">
+              <div id="big_banner_wrap">
+	            <ul id="banner_menu_wrap" class="col-md-6 col-xs-6 col-sm-6">
+                @foreach (var item in categoryList)
+                {
+                    <li>
+                        <a class="col-md-10 col-xs-8 col-sm-10 text-center">@item.TaskTypeName</a>
+			            <a class="banner_menu_i col-md-2 col-xs-4 col-sm-2">&gt;</a>
+                        <div  class="banner_menu_content col-md-12 col-xs-8 col-sm-12">
+	                        <ul>
+                                @foreach (var childrenCode in item.ChildrenTaskType)
+                                {
+                                    <li class=" col-md-12 col-xs-12 col-sm-12">
+                                        <a ><img src="@item.TaskTypeLogo"/></a>
+                                        <input name="taskTypeID" class="taskTypeID" type="hidden" value="@childrenCode.TaskTypeID"/>
+                                        <input name="taskTypeName" class="taskTypeName" type="hidden" value="@childrenCode.TaskTypeName"/>
+                                        <a name="taskType" href="../TaskModule/Tasklist" data-dismiss="modal">@childrenCode.TaskTypeName</a>
+                                    </li>
+                                }
+	                        </ul>
+                        </div>
+                    </li>
+                } 
+                </ul>
+            </div> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    @Scripts.Render("~/Scripts/TaskModule/cbpHorizontalSlideOutMenu.js")  
+    @Scripts.Render("~/Scripts/TaskModule/TypeScript.js")
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        $("a[name='taskType']").unbind().bind('click', function () {
+	            var x = $(this).siblings("input[name='taskTypeID']").val();
+	            var y = $(this).siblings("input[name='taskTypeName']").val();
+	            $("input[ID='MyTaskType']").val(x);
+	            $("input[ID='MyTaskTypeName']").val(y);
+	            location.href = "../TaskModule/TaskList?TaskTypeID="+x+"&TaskTypeName="+y+"";
+	        });
+	    });
+	</script>
+}

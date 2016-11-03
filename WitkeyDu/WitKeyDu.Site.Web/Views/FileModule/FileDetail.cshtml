@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "文档详情";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    WitKeyDu.Site.Models.FileView fileModel = ViewData["fileInfo"] as WitKeyDu.Site.Models.FileView; 
+}
+@model IEnumerable<WitKeyDu.Site.Models.FileResourceView>
+
+@Styles.Render("~/Content/FileModule/FileDetail.css")
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading" style="overflow:auto;">
+            <div class="col-md-1 col-sm-4 col-xs-4 text-left left-border">
+                <img src="@fileModel.HeadImg" class="img-circle navbar-brand" alt="头像" />
+            </div>
+            <div class="col-md-11 col-sm-8 col-xs-8 text-center">
+                <h3>@fileModel.FileName</h3>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-12 col-xs-12 col-sm-12 file-intro-module">
+                @Html.Raw(@fileModel.FileIntroduction)
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="file-module">
+                    <div class="col-md-10 col-xs-8 col-sm-10 fileName">
+                        <a href="/FileModule/DownFile?filePath=@item.FileSrc&fileName=@item.FileName" >
+                            @Html.DisplayFor(modelItem => item.FileName) 
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-4 col-sm-2  btn-href btn btn-success">
+                    <a href="/FileModule/DownFile?filePath=@item.FileSrc&fileName=@item.FileName" >下载文件 </a>  
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

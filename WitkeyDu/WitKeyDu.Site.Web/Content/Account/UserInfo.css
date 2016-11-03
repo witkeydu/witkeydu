@@ -1,0 +1,129 @@
+﻿a,a:hover
+{
+     text-decoration:none;
+}
+.nav-padding
+{
+    padding: 0px 0px;
+    border-bottom: 0px solid transparent;
+}
+.nav-padding li
+{
+    font-size:16px;
+    padding:20px 0px;
+}
+.panelbox
+{
+     background-color:#ffffff;
+     color:#000000;
+     background-size: 100% 100%;
+     background-image:url('../../Images/bgimg.png');
+     padding:30px 0px;
+ }
+ 
+  .task
+ {
+      margin-bottom:20px;
+  }
+ .task-module
+ {
+     overflow:auto;
+     background-color:#ffffff;
+     box-shadow:0 1px 3px rgba(0,0,0,.3);
+     color:#000000;
+     border-radius:5px;
+ }
+ .edging
+ {
+     padding:6px 10px;
+ }
+ .task-price
+ {
+    font-size:18px;
+ }
+ .mark
+ {
+     background-color:#65C279;
+     color:#000000;
+ }
+ .task-footer
+ {
+     background-color:#F3F5F7;
+ }
+ .bottom-line
+ {
+    padding:15px 0px;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+ }
+ 
+.head-img
+{
+     padding:5px 5px;
+     overflow:auto;
+     background-color:#ffffff;
+     box-shadow:0 1px 3px rgba(0,0,0,.3);
+     color:#000000;
+}
+.left-border
+{
+     border-right: 2px dashed  #efefef;
+ }
+ .fileName a, .fileName a:hover
+{
+    height:55px;
+    line-height:55px;
+    text-decoration:none;
+    font-size:25px;
+    color:#000000;
+}
+.btn-href 
+{
+    height:55px;
+    line-height:55px;
+    color:#ffffff;
+    font-size:16px;
+    padding:0px;
+ }
+ 
+.btn-href a
+{
+    color:#ffffff;
+ }
+.btn-href:hover
+{
+    height:55px;
+    line-height:55px;
+    color:#ffffff;
+    font-size:18px;
+ }
+.btn-save
+{
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px;
+    line-height: 1.42857;
+    color: #fff;
+    background-color: #66CCCC;
+    background-image: none;
+    border: 1px solid #CCC;
+    font: bold 16px Arial, Helvetica;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+.notice
+{
+    background-color:#fcf8e3;
+    padding:20px;
+    font-size:16px;
+}
+.form-module
+{
+    padding:50px 0px;
+}
+.label-line-height
+{
+    line-height:50px;
+}

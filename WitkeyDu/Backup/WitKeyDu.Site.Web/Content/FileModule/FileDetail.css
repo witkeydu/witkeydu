@@ -1,0 +1,49 @@
+﻿.left-border
+{
+     border-right: 2px dashed  #ffffff;
+ }
+.fileName a,a:hover
+{
+    height:40px;
+    line-height:40px;
+    text-decoration:none;
+    font-size:18px;
+    color:#000000;
+}
+
+.btn-href 
+{
+    height:39px;
+    line-height:39px;
+    color:#ffffff;
+    font-size:16px;
+    padding:0px;
+    vertical-align:middle;
+ }
+ 
+.btn-href a
+{
+    color:#ffffff;
+    padding:0px;
+ }
+.btn-href:hover
+{
+    height:39px;
+    line-height:39px;
+    color:#ffffff;
+    font-size:18px;
+    padding:0px;
+ }
+ .file-intro-module
+ {
+     font-size:20px;
+     padding:20px 15px;
+ }
+ .file-module
+ {
+    width:100%;
+    border-top:2px dashed  #efefef;  
+    border-bottom:2px dashed  #efefef;
+    overflow:auto;
+    padding:10px 0px;
+ }

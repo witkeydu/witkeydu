@@ -1,0 +1,5 @@
+F:\毕业设计\ProgramOfWitkey\WitKeyDu\WitKeyDu.Component.Consoles\obj\Debug\ResolveAssemblyReference.cache
+F:\毕业设计\ProgramOfWitkey\WitKeyDu\WitKeyDu.Component.Consoles\obj\Debug\GMF.Demo.Consoles.pdb
+F:\毕业设计\ProgramOfWitkey\WitKeyDu\WitKeyDu\Output\GMF.Demo.Consoles.exe
+F:\毕业设计\ProgramOfWitkey\WitKeyDu\WitKeyDu\Output\GMF.Demo.Consoles.pdb
+F:\毕业设计\ProgramOfWitkey\WitKeyDu\WitKeyDu.Component.Consoles\obj\Debug\GMF.Demo.Consoles.exe

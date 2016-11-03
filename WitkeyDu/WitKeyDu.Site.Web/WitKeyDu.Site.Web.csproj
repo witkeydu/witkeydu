@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E02290B8-4525-4117-9CFB-DFBD4460D5D8}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WitKeyDu.Site.Web</RootNamespace>
+    <AssemblyName>WitKeyDu.Site.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Lucene.Net, Version=2.9.2.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lucenedll\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PanGu, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lucenedll\PanGu.dll</HintPath>
+    </Reference>
+    <Reference Include="PanGu.HighLight, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lucenedll\PanGu.HighLight.dll</HintPath>
+    </Reference>
+    <Reference Include="PanGu.Lucene.Analyzer, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lucenedll\PanGu.Lucene.Analyzer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Webdiyer.MvcPager, Version=3.0.2015.802, Culture=neutral, PublicKeyToken=f6872c5a09aed72c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Webdiyer.MvcPager.3.0.1.1\lib\Webdiyer.MvcPager.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\IndexManager.cs" />
+    <Compile Include="Common\SplitContent.cs" />
+    <Compile Include="Content\RefrenceFile\WebUploder\other\fileupload.ashx.cs">
+      <DependentUpon>fileupload.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\RefrenceFile\WebUploder\other\MergeFiles.ashx.cs">
+      <DependentUpon>MergeFiles.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ForumModuleController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StoreModuleController.cs" />
+    <Compile Include="Controllers\TaskModuleController.cs" />
+    <Compile Include="Controllers\FileModuleController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Images\HtmlHelperExtensions\HtmlExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Account\LoginPage.css" />
+    <Content Include="Content\Account\RegisterPage.css" />
+    <Content Include="Content\Account\UserInfo.css" />
+    <Content Include="Content\FileModule\FileDetail.css" />
+    <Content Include="Content\FileModule\FileList.css" />
+    <Content Include="Content\ForumModule\ForumDetail.css" />
+    <Content Include="Content\ForumModule\ForumList.css" />
+    <Content Include="Content\ForumModule\ReleaseForum.css" />
+    <Content Include="Content\Home\Home.css" />
+    <Content Include="Content\Home\Lunbo.css" />
+    <Content Include="Content\Home\Search.css" />
+    <Content Include="Content\RefrenceFile\Bootstrap\css\bootstrap-datetimepicker.css" />
+    <Content Include="Content\RefrenceFile\Bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\RefrenceFile\Bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\RefrenceFile\Bootstrap\css\bootstrap.css" />
+    <Content Include="Content\RefrenceFile\Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\RefrenceFile\Bootstrap\css\daterangepicker-bs3.css" />
+    <Content Include="Content\RefrenceFile\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\bootstrap-datetimepicker.js" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\bootstrap-datetimepicker.zh-CN.js" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\bootstrap.js" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\daterangepicker.js" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\jquery-1.7.1.js" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\jquery-2.2.0.js" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\jquery.min.js" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\jquery.validate.js" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\moment-with-locales.js" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\moment.js" />
+    <Content Include="Content\RefrenceFile\Bootstrap\js\npm.js" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\calendar.js" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\lang\en.js" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\lang\zh-cn.js" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\lang\zh-tw.js" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\skin\datePicker.gif" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\skin\default\datepicker.css" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\skin\default\img.gif" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\skin\WdatePicker.css" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\skin\whyGreen\img.gif" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\WdatePicker.js" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\开发包\lang\en.js" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\开发包\lang\zh-cn.js" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\开发包\lang\zh-tw.js" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\开发包\readme.txt" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\开发包\skin\datePicker.gif" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\开发包\skin\default\datepicker.css" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\开发包\skin\default\img.gif" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\开发包\skin\WdatePicker.css" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\RefrenceFile\MyDatePicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="Content\RefrenceFile\HeadImage\expressInstall.swf" />
+    <Content Include="Content\RefrenceFile\HeadImage\fullAvatarEditor.js" />
+    <Content Include="Content\RefrenceFile\HeadImage\fullAvatarEditor.swf" />
+    <Content Include="Content\RefrenceFile\HeadImage\swfobject.js" />
+    <Content Include="Content\RefrenceFile\TimeLine\css\component.css" />
+    <Content Include="Content\RefrenceFile\TimeLine\css\default.css" />
+    <Content Include="Content\RefrenceFile\TimeLine\fonts\bpicons\bpicons.svg" />
+    <Content Include="Content\RefrenceFile\TimeLine\fonts\fontawesome.svg" />
+    <Content Include="Content\RefrenceFile\TimeLine\fonts\timelineicons\ecoico.dev.svg" />
+    <Content Include="Content\RefrenceFile\TimeLine\fonts\timelineicons\ecoico.svg" />
+    <Content Include="Content\RefrenceFile\TimeLine\index.html" />
+    <Content Include="Content\RefrenceFile\TimeLine\js\modernizr.custom.js" />
+    <Content Include="Content\RefrenceFile\UploadImage\fileinput.min.css" />
+    <Content Include="Content\RefrenceFile\UploadImage\fileinput.min.js" />
+    <Content Include="Content\RefrenceFile\UploadImage\fileinput_locale_zh.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\dist\css\fonts\icomoon.svg" />
+    <Content Include="Content\RefrenceFile\wangEditor\dist\css\wangEditor.css" />
+    <Content Include="Content\RefrenceFile\wangEditor\dist\css\wangEditor.min.css" />
+    <Content Include="Content\RefrenceFile\wangEditor\dist\js\lib\jquery-1.10.2.min.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\dist\js\wangEditor.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\dist\js\wangEditor.min.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\Gruntfile.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\node_modules\formidable\index.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\node_modules\formidable\lib\file.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\node_modules\formidable\lib\incoming_form.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\node_modules\formidable\lib\index.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\node_modules\formidable\lib\json_parser.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\node_modules\formidable\lib\multipart_parser.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\node_modules\formidable\lib\octet_parser.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\node_modules\formidable\lib\querystring_parser.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\server-windows.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\server.js" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\1.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\10.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\11.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\12.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\13.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\14.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\15.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\16.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\17.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\18.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\19.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\2.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\20.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\21.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\22.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\23.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\24.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\25.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\26.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\27.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\28.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\29.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\3.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\30.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\31.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\32.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\33.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\34.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\35.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\36.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\37.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\38.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\39.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\4.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\40.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\41.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\42.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\43.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\44.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\45.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\46.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\47.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\48.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\49.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\5.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\50.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\6.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\7.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\8.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\default\9.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\jinxing\1.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\jinxing\2.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\jinxing\3.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\jinxing\4.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\jinxing\5.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\emotions\jinxing\6.gif" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\highlightjs\dark.css" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\highlightjs\github.css" />
+    <Content Include="Content\RefrenceFile\wangEditor\static\highlightjs\highlight.pack.js" />
+    <Content Include="Content\RefrenceFile\WebUploder\css\style.css" />
+    <Content Include="Content\RefrenceFile\WebUploder\css\webuploader.css" />
+    <Content Include="Content\RefrenceFile\WebUploder\images\bg.png" />
+    <Content Include="Content\RefrenceFile\WebUploder\images\icons.png" />
+    <Content Include="Content\RefrenceFile\WebUploder\images\image.png" />
+    <Content Include="Content\RefrenceFile\WebUploder\images\progress.png" />
+    <Content Include="Content\RefrenceFile\WebUploder\images\success.png" />
+    <Content Include="Content\RefrenceFile\WebUploder\js\upload.js" />
+    <Content Include="Content\RefrenceFile\WebUploder\js\webuploader.js" />
+    <Content Include="Content\RefrenceFile\WebUploder\other\expressInstall.swf" />
+    <Content Include="Content\RefrenceFile\WebUploder\other\Uploader.swf" />
+    <Content Include="Content\FileModule\ReleaseFile.css" />
+    <Content Include="Content\Shared\Site.css" />
+    <Content Include="Content\StoreModule\CreateStore.css" />
+    <Content Include="Content\StoreModule\ReleaseProject.css" />
+    <Content Include="Content\StoreModule\StoreDetail.css" />
+    <Content Include="Content\StoreModule\StoreList.css" />
+    <Content Include="Content\TaskModule\component.css" />
+    <Content Include="Content\TaskModule\ReleaseTask.css" />
+    <Content Include="Content\TaskModule\TaskDetail.css" />
+    <Content Include="Content\TaskModule\TaskList.css" />
+    <Content Include="Content\TaskModule\TaskPace.css" />
+    <Content Include="Content\TaskModule\TaskPlanDetail.css" />
+    <Content Include="Content\TaskModule\TypeStyle.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\UpLoadFile\TaskLogo\WeiXinLogo.jpg" />
+    <Content Include="Dict\ChsDoubleName1.txt" />
+    <Content Include="Dict\ChsDoubleName2.txt" />
+    <Content Include="Dict\ChsSingleName.txt" />
+    <Content Include="Dict\Stopword.txt" />
+    <Content Include="Dict\Synonym.txt" />
+    <Content Include="Dict\Wildcard.txt" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\20160519748bzsj.png" />
+    <Content Include="Images\20160519748sjkf.png" />
+    <Content Include="Images\20160519748wxkf.png" />
+    <Content Include="Images\20160519748wzkf.png" />
+    <Content Include="Images\20160519748zdkf.png" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bgimg.png" />
+    <Content Include="Images\icn_edit.png" />
+    <Content Include="Images\icn_warning.png" />
+    <Content Include="Images\login-sprite.png" />
+    <Content Include="Images\Logo.png" />
+    <Content Include="Images\man.GIF" />
+    <Content Include="Images\qq.png" />
+    <Content Include="Images\wb.png" />
+    <Content Include="Images\weikedu.png" />
+    <Content Include="Images\wkdlc.png" />
+    <Content Include="Images\wkdlogo.jpg" />
+    <Content Include="Images\wkdyq.png" />
+    <Content Include="Images\wx.png" />
+    <Content Include="Lucenedll\log4net.dll" />
+    <Content Include="Lucenedll\Lucene.Net.dll" />
+    <Content Include="Lucenedll\PanGu.dll" />
+    <Content Include="Lucenedll\PanGu.HighLight.dll" />
+    <Content Include="Lucenedll\PanGu.Lucene.Analyzer.dll" />
+    <Content Include="Scripts\Account\Login.js" />
+    <Content Include="Scripts\ForumModule\InsComEditor.js" />
+    <Content Include="Scripts\TaskModule\moment.js" />
+    <Content Include="Scripts\TaskModule\ReleaseTask.js" />
+    <Content Include="Scripts\TaskModule\TypeScript.js" />
+    <Content Include="Scripts\Shared\Site.js" />
+    <Content Include="Scripts\TaskModule\cbpHorizontalSlideOutMenu.js" />
+    <Content Include="Scripts\TaskModule\cbpHorizontalSlideOutMenu.min.js" />
+    <Content Include="Scripts\TaskModule\modernizr.custom.js" />
+    <Content Include="Views\Account\Login.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\UpLoadFile\CommitFile\" />
+    <Folder Include="Content\UpLoadFile\FileResource\" />
+    <Folder Include="Content\UpLoadFile\SysImages\" />
+    <Folder Include="Images\HeadImage\" />
+    <Folder Include="IndexData\" />
+    <Folder Include="Scripts\FileModule\" />
+    <Folder Include="Scripts\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WitKeyDu.Component.Tools\WitKeyDu.Component.Tools.csproj">
+      <Project>{8C011ED6-D755-40D0-8223-43B308F5EB6B}</Project>
+      <Name>WitKeyDu.Component.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Core.Data\WitKeyDu.Core.Data.csproj">
+      <Project>{761686F6-93A6-4313-94D5-29DC65492EC0}</Project>
+      <Name>WitKeyDu.Core.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Core.Models\WitKeyDu.Core.Models.csproj">
+      <Project>{FB77B3D9-C5A2-42BD-8942-9264F6003F12}</Project>
+      <Name>WitKeyDu.Core.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Core\WitKeyDu.Core.csproj">
+      <Project>{1082438F-3FCC-40FB-AF7F-D14C05A84D29}</Project>
+      <Name>WitKeyDu.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Site.Models\WitKeyDu.Site.Models.csproj">
+      <Project>{4A535968-EBC2-42EA-BF02-C8E157A20E3F}</Project>
+      <Name>WitKeyDu.Site.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WitKeyDu.Site\WitKeyDu.Site.csproj">
+      <Project>{D341A35E-7656-41EE-B5CC-8880A12B89B5}</Project>
+      <Name>WitKeyDu.Site</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\RefrenceFile\Bootstrap\config.json" />
+    <None Include="Content\RefrenceFile\Bootstrap\css\bootstrap-theme.css.map" />
+    <None Include="Content\RefrenceFile\Bootstrap\css\bootstrap.css.map" />
+    <None Include="Content\RefrenceFile\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\RefrenceFile\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\RefrenceFile\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Content\RefrenceFile\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\UserList.cshtml" />
+    <Content Include="Views\TaskModule\ReleaseTask.cshtml" />
+    <Content Include="Views\TaskModule\TaskList.cshtml" />
+    <Content Include="Views\TaskModule\TaskDetail.cshtml" />
+    <Content Include="Views\ForumModule\ReleaseForum.cshtml" />
+    <None Include="Content\RefrenceFile\TimeLine\fonts\bpicons\bpicons.eot" />
+    <None Include="Content\RefrenceFile\TimeLine\fonts\bpicons\bpicons.ttf" />
+    <None Include="Content\RefrenceFile\TimeLine\fonts\bpicons\bpicons.woff" />
+    <None Include="Content\RefrenceFile\TimeLine\fonts\fontawesome.eot" />
+    <None Include="Content\RefrenceFile\TimeLine\fonts\fontawesome.ttf" />
+    <None Include="Content\RefrenceFile\TimeLine\fonts\fontawesome.woff" />
+    <None Include="Content\RefrenceFile\TimeLine\fonts\timelineicons\ecoico.eot" />
+    <None Include="Content\RefrenceFile\TimeLine\fonts\timelineicons\ecoico.ttf" />
+    <None Include="Content\RefrenceFile\TimeLine\fonts\timelineicons\ecoico.woff" />
+    <None Include="Content\RefrenceFile\wangEditor\.gitattributes" />
+    <None Include="Content\RefrenceFile\wangEditor\.gitignore" />
+    <None Include="Content\RefrenceFile\wangEditor\.jshintrc" />
+    <None Include="Content\RefrenceFile\wangEditor\dist\css\fonts\icomoon.eot" />
+    <None Include="Content\RefrenceFile\wangEditor\dist\css\fonts\icomoon.ttf" />
+    <None Include="Content\RefrenceFile\wangEditor\dist\css\fonts\icomoon.woff" />
+    <None Include="Content\RefrenceFile\wangEditor\dist\css\wangEditor.less" />
+    <Content Include="Content\RefrenceFile\wangEditor\dist\upload.ashx" />
+    <None Include="Content\RefrenceFile\wangEditor\node_modules\formidable\.npmignore" />
+    <None Include="Content\RefrenceFile\wangEditor\node_modules\formidable\.travis.yml" />
+    <None Include="Content\RefrenceFile\wangEditor\node_modules\formidable\LICENSE" />
+    <None Include="Content\RefrenceFile\wangEditor\node_modules\formidable\package.json" />
+    <None Include="Content\RefrenceFile\wangEditor\node_modules\formidable\Readme.md" />
+    <None Include="Content\RefrenceFile\wangEditor\package.json" />
+    <Content Include="Views\FileModule\ReleaseFile.cshtml" />
+    <Content Include="Views\Account\HeadImage.cshtml" />
+    <Content Include="Content\RefrenceFile\WebUploder\other\fileupload.ashx" />
+    <Content Include="Content\RefrenceFile\WebUploder\other\MergeFiles.ashx" />
+    <Content Include="Views\FileModule\FileList.cshtml" />
+    <Content Include="Views\FileModule\FileDetail.cshtml" />
+    <Content Include="Views\ForumModule\ForumDetail.cshtml" />
+    <Content Include="Views\ForumModule\ForumList.cshtml" />
+    <None Include="Dict\Dict.dct" />
+    <Content Include="Views\TaskModule\TaskPlan.cshtml" />
+    <Content Include="Views\TaskModule\TaskPlanDetail.cshtml" />
+    <Content Include="Views\StoreModule\CreateStore.cshtml" />
+    <Content Include="Views\StoreModule\StoreDetail.cshtml" />
+    <Content Include="Views\StoreModule\StoreList.cshtml" />
+    <Content Include="Views\StoreModule\ProjectDetail.cshtml" />
+    <Content Include="Views\StoreModule\ReleaseProject.cshtml" />
+    <Content Include="Views\Account\UserInfo.cshtml" />
+    <Content Include="Views\TaskModule\FinishedTask.cshtml" />
+    <Content Include="Views\Account\CommitTask.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5025</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/WitKeyDu.Site.Web</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

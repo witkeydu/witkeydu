@@ -1,0 +1,288 @@
+﻿@model WitKeyDu.Site.Models.ReleaseForumModel
+@{
+    ViewBag.Title = "发布帖子";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    var SelectItems = (List<SelectListItem>)ViewData["ForumTypeID"];
+}
+@Styles.Render("~/Content/RefrenceFile/wangEditor/dist/css/wangEditor.css")
+@Styles.Render("~/Content/ForumModule/ReleaseForum.css")
+
+@using (Html.BeginForm("ReleaseForum", "ForumModule", FormMethod.Post))
+{
+	<div class="container">
+		<div class="row">
+		    <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+		                <div class="col-md-8 col-md-offset-2 form-module">
+                            <div class="col-md-12 col-xs-12 col-xm-12 text-left notice">
+                                请您在此文明发帖，传递社会正能量，谢谢您的合作。
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                            </div>
+		                    <div class="form-group">
+                                <div class="col-md-6 col-xs-6 col-xm-6">    
+                                    @Html.LabelFor(model => model.ForumTypeID, new { @class = "control-label col-md label-line-height" })
+                                    @Html.ValidationMessageFor(model => model.ForumTypeID)  
+                                </div>  
+                                <div class="col-md-6 col-xs-6 col-xm-6">    
+                                    @Html.LabelFor(model => model.ForumLogo, new { @class = "control-label col-md label-line-height" }) 
+                                </div>  
+                                <div class="col-md-6 col-xs-6 col-xm-6">
+                                    @Html.DropDownList("ForumTypeID", SelectItems as IEnumerable<SelectListItem>, new { @class = "form-control input-md" })
+                                </div>   
+                                <div class="col-md-6 col-xs-6 col-xm-6"> 
+                                    <input class="btn btn-default form-control input-md" type="button" data-toggle="modal" data-target="#myModal"value="设置图标" />
+                                </div>
+                            </div>  
+				            <div class="form-group">
+                                <div class="col-md-12"> 
+                                    @Html.LabelFor(model => model.ForumName, new { @class = "control-label col-md label-line-height" })
+                                    @Html.ValidationMessageFor(model => model.ForumName)  
+                                </div> 
+                                <div class="col-md-12"> 
+                                    @Html.TextBoxFor(model => model.ForumName, new { @class = "form-control input-md" })
+                                </div>
+                            </div> 
+		                    <div class="form-group">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.ForumContent, new { @class = "control-label col-md label-line-height" })
+                                    @Html.ValidationMessageFor(model => model.ForumContent)
+                                </div>  
+                                <div class="col-md-12"> 
+                                    @Html.TextAreaFor(model => model.ForumContent, new { @id = "ForumContent", @class = "form-control input-md" })
+                                </div>
+                            </div>
+		                    <div class="form-group">            
+                                <div class="col-md-12 text-center"> 
+                                    <br />
+                                    <p class="text-center">
+                                        @Html.HiddenFor(model => model.ReturnUrl)
+                                        @Html.Submit("帖  子  发  布")
+                                    </p>
+                                </div>
+				            </div>
+                        </div>
+				    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="myModalLabel">请选择帖子Logo</h5>
+                </div>
+                <div class="modal-body">
+                    <div style="height:350px;text-align:center">
+		                <p id="swfContainer" width="630px">
+                            本组件需要安装Flash Player后才可使用，请从
+                            <a href="http://www.adobe.com/go/getflashplayer">
+                                这里
+                            </a>
+                            下载安装。
+		                </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/Content/RefrenceFile/wangEditor/dist/js/wangEditor.js")
+    @Scripts.Render("~/Content/RefrenceFile/HeadImage/swfobject.js")
+    @Scripts.Render("~/Content/RefrenceFile/HeadImage/fullAvatarEditor.js")
+    <script type="text/javascript">
+    
+
+        $(function () {
+            $(document).ready(function () {
+                $('#TaskStartTime').daterangepicker({ 
+                    todayBtn: true,
+                    singleDatePicker: true
+                }).on("click",function(ev){
+                    $("#TaskStartTime").datetimepicker("setEndDate", $("#TaskEndTime").val());
+                    });
+                $('#TaskEndTime').daterangepicker({ 
+                todayBtn: true,
+                    singleDatePicker: true 
+                }).on("click",function(ev){
+                  $("#TaskEndTime").datetimepicker("setStartDate", $("#datetimeStart").val());
+                   });
+            });
+        });
+
+        var editor = new wangEditor('ForumContent');
+        // 自定义菜单
+        editor.config.menus = [
+        'source', 'bold', 'underline', 'italic', 'strikethrough',
+        'eraser', 'forecolor', 'bgcolor', 'quote', 'fontfamily',
+        'fontsize', 'head', 'unorderlist', 'orderlist', 'alignleft',
+         'aligncenter', 'alignright', 'link', 'unlink', 'table',
+        'emotion', 'img', 'vedio', 'location', 'insertcode', 'undo',
+         'redo', 'fullscreen'
+    ];
+        // 颜色
+        editor.config.colors = {
+            '#880000': '暗红色',
+            '#800080': '紫色',
+            '#ff0000': '红色'
+        };
+
+        // 字体
+        editor.config.familys = [
+        '宋体', '黑体', '楷体', '微软雅黑',
+        'Arial', 'Verdana', 'Georgia'
+        ];
+
+        // 字号
+        editor.config.fontsizes = {
+            // 格式：'value': 'title'
+            1: '10px',
+            2: '13px',
+            3: '16px',
+            4: '19px',
+            5: '22px',
+            6: '25px',
+            7: '28px'
+        };
+        // 表情
+        editor.config.emotions = {
+            'default': {
+                title: '默认',  // 分组的标题
+                size: 18,  // 表情图标的尺寸
+                imgs: [
+                // 每个表情图标的url地址
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/1.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/2.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/3.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/4.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/5.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/6.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/7.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/8.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/9.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/10.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/11.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/12.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/13.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/14.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/15.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/16.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/17.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/18.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/19.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/20.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/21.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/22.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/23.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/24.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/25.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/26.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/27.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/28.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/29.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/30.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/31.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/32.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/33.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/34.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/35.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/36.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/37.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/38.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/39.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/40.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/41.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/42.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/43.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/44.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/45.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/46.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/47.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/48.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/49.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/default/50.gif'
+            ]
+            },
+            'jinxing': {
+                title: '金星',  // 分组的标题
+                size: 50,  // 表情图标的尺寸
+                imgs: [
+                // 每个表情图标的url地址
+                '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/1.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/2.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/3.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/4.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/5.gif',
+                '../Content/RefrenceFile/wangEditor/static/emotions/jinxing/6.gif'
+            ]
+            }
+        };
+
+        // 将全屏时z-index修改为20000
+        editor.config.zindex = 20000;
+        // 阻止输出log
+        wangEditor.config.printLog = true;
+        // 关闭js过滤
+        editor.config.jsFilter = true;
+        // 取消粘贴过滤
+        editor.config.pasteFilter = true;
+        // 上传图片
+        editor.config.uploadImgUrl = '../Content/RefrenceFile/wangEditor/dist/upload.ashx';
+        editor.create();
+
+
+
+        swfobject.addDomLoadEvent(function () 
+        {      
+         var swf = new fullAvatarEditor(
+                "../../Content/RefrenceFile/HeadImage/fullAvatarEditor.swf",
+                 "../../Content/RefrenceFile/HeadImage/expressInstall.swf", "swfContainer", {
+                id: 'swf',
+                upload_url: '/ForumModule/UploadAction',
+                //  src_url: "/samplePictures/Default.jpg",//默认加载的原图片的url
+                src_upload: 0,//默认为0；是否上传原图片的选项，有以下值：0:不上传；1:上传；2 :显示复选框由用户选择
+                isShowUploadResultIcon: false,//在上传完成时（无论成功和失败），是否显示表示上传结果的图标
+                src_size: "10MB",//选择的本地图片文件所允许的最大值，必须带单位，如888Byte，88KB，8MB
+                src_size_over_limit: "文件大小超出10MB，请重新选择图片。",//当选择的原图片文件的大小超出指定最大值时的提示文本。可使用占位符{0}表示选择的原图片文件的大小。
+                src_box_width: "210",//原图编辑框的宽度
+                src_box_height: "240",//原图编辑框的高度
+                tab_visible: false,//是否显示选项卡*
+
+                browse_box_width: "280",//图片选择框的宽度
+                browse_box_height: "240",//图片选择框的高度
+
+                avatar_sizes: "230*150",//100*100|50*50|32*32,表示一组或多组头像的尺寸。其间用"|"号分隔。
+            }, function (msg) {
+                switch (msg.code) {
+                    // case 1: alert("页面成功加载了组件！"); break;
+                    // case 2: alert("已成功加载默认指定的图片到编辑面板。"); break;
+                    case 3:
+                        if (msg.type == 0) {
+                            alert("摄像头已准备就绪且用户已允许使用。");
+                        }
+                        else if (msg.type == 1) {
+                            alert("摄像头已准备就绪但用户未允许使用！");
+                        }
+                        else {
+                            alert("摄像头被占用！");
+                        }
+                        break;
+                    case 5:
+                        if (msg.type == 0) {
+                            if (msg.content.sourceUrl) {
+                                alert("原图片已成功保存至服务器，url为：\n" + msg.content.sourceUrl);
+                            }
+                            alert("头像设置成功！");
+                        }
+                        break;
+                }
+            }
+            );
+            document.getElementById("upload").onclick = function () {
+                swf.call("upload");
+            };
+        });
+    </script>
+}
